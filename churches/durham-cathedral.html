@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Durham Cathedral — Churches of the A1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --stone: #2d2a26;
+            --stone-light: #3d3a35;
+            --parchment: #f5f0e8;
+            --gold: #c9a227;
+            --gold-light: #e8d9a0;
+            --ruby: #8b2942;
+            --sapphire: #1e3a5f;
+            --text: #1a1a1a;
+            --text-light: #5a5a5a;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Newsreader', Georgia, serif;
+            background: var(--parchment);
+            color: var(--text);
+            font-size: 19px;
+            line-height: 1.75;
+        }
+        
+        a { color: var(--ruby); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        nav {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            background: white;
+        }
+        
+        nav a { color: var(--text-light); }
+        nav a:hover { color: var(--ruby); text-decoration: none; }
+        
+        .nav-title { color: var(--text); font-weight: 500; }
+        
+        .church-hero {
+            background: linear-gradient(180deg, var(--stone) 0%, var(--stone-light) 100%);
+            color: var(--parchment);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        
+        .church-hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .church-region {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .church-hero h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+        
+        .church-location {
+            font-size: 1.2rem;
+            color: var(--gold-light);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        
+        .church-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .church-meta span {
+            color: var(--gold);
+        }
+        
+        .unesco-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--stone);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.75rem;
+            border-radius: 3px;
+            margin-top: 1.5rem;
+        }
+        
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        article {
+            padding: 4rem 0;
+        }
+        
+        article p {
+            margin-bottom: 1.5rem;
+        }
+        
+        article h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 3rem 0 1.5rem;
+            font-style: italic;
+        }
+        
+        .lead {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            border-left: 3px solid var(--gold);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .info-box {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        
+        .info-box h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .info-item {
+            font-size: 0.9rem;
+        }
+        
+        .info-item label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        
+        blockquote {
+            font-size: 1.35rem;
+            font-style: italic;
+            color: var(--ruby);
+            border-left: 3px solid var(--ruby);
+            padding-left: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        
+        blockquote cite {
+            display: block;
+            font-size: 0.85rem;
+            font-style: normal;
+            color: var(--text-light);
+            margin-top: 0.75rem;
+        }
+        
+        .image-placeholder {
+            background: linear-gradient(135deg, var(--stone) 0%, var(--stone-light) 100%);
+            border-radius: 8px;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 3rem;
+            margin: 2rem 0;
+        }
+        
+        .image-caption {
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: -1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .saints-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .saint-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .saint-card h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--ruby);
+        }
+        
+        .saint-card .dates {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+        }
+        
+        .saint-card p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        .church-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            margin-top: 3rem;
+        }
+        
+        .church-nav a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            max-width: 45%;
+        }
+        
+        .church-nav a:hover { color: var(--ruby); text-decoration: none; }
+        
+        .church-nav .label {
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+        
+        .church-nav .title {
+            font-family: 'Newsreader', serif;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+        
+        .church-nav a:hover .title { color: var(--ruby); }
+        .church-nav .next { text-align: right; }
+        
+        footer {
+            background: var(--stone);
+            color: var(--parchment);
+            padding: 2rem;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+        }
+        
+        footer a { color: var(--gold); }
+        
+        @media (max-width: 600px) {
+            .church-hero h1 { font-size: 2.25rem; }
+            .info-grid { grid-template-columns: 1fr; }
+            .saints-grid { grid-template-columns: 1fr; }
+            .church-meta { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html">← Churches of the A1</a>
+        <span class="nav-title">County Durham</span>
+        <a href="hexham-abbey.html">Next Church →</a>
+    </nav>
+    
+    <header class="church-hero">
+        <div class="church-hero-content">
+            <p class="church-region">Region V — County Durham</p>
+            <h1>Durham Cathedral</h1>
+            <p class="church-location">Durham, County Durham — Mile 260</p>
+            <div class="church-meta">
+                <div>Founded: <span>1093</span></div>
+                <div>Style: <span>Romanesque / Norman</span></div>
+                <div>Visitors: <span>393,000/year</span></div>
+            </div>
+            <div class="unesco-badge">UNESCO World Heritage Site</div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <article>
+            <p class="lead">Rising from a wooded peninsula above the River Wear, Durham Cathedral is perhaps the finest Romanesque building in Europe. Built to house the relics of St Cuthbert, it has been a place of pilgrimage for nearly a thousand years.</p>
+            
+            <div class="image-placeholder">⛪</div>
+            <p class="image-caption">Durham Cathedral and Castle, together forming a UNESCO World Heritage Site since 1986</p>
+            
+            <p>Durham Cathedral was begun in 1093, just 27 years after the Norman Conquest, and completed in 1133. It represents the apogee of Norman architecture in England — massive, confident, and built to last. The ribbed vaults of the nave, among the earliest in Europe, pioneered techniques that would become standard in Gothic architecture.</p>
+            
+            <p>The cathedral sits on a dramatic peninsula formed by a loop of the River Wear. Together with Durham Castle opposite, it forms one of the most recognizable skylines in England — and one of the few places in Britain inscribed as a UNESCO World Heritage Site primarily for its architecture.</p>
+            
+            <blockquote>
+                "I paused upon the bridge, and admired and wondered at the beauty and glory of this scene... I never saw so lovely and magnificent a scene."
+                <cite>— Nathaniel Hawthorne, 1857</cite>
+            </blockquote>
+            
+            <h2>The Two Saints</h2>
+            
+            <p>Durham Cathedral houses the shrines of two of England's most important early Christian figures:</p>
+            
+            <div class="saints-grid">
+                <div class="saint-card">
+                    <h4>St Cuthbert</h4>
+                    <div class="dates">c. 634 – 687 AD</div>
+                    <p>The "Wonder Worker of Britain." Bishop of Lindisfarne, hermit of Inner Farne, and the most venerated saint of medieval Northern England. His body, found incorrupt eleven years after death, was carried by monks fleeing Viking raids before finding rest at Durham in 995.</p>
+                </div>
+                <div class="saint-card">
+                    <h4>The Venerable Bede</h4>
+                    <div class="dates">c. 673 – 735 AD</div>
+                    <p>The "Father of English History." Monk of Jarrow, scholar, and author of the Ecclesiastical History of the English People. His bones were brought to Durham in 1022 and lie in the Galilee Chapel at the west end.</p>
+                </div>
+            </div>
+            
+            <p>The shrine of St Cuthbert, located behind the High Altar, was one of the richest in medieval England. It was destroyed during the Reformation in 1538, but the saint's tomb remains, and the site continues to draw pilgrims. The treasures that accompanied his coffin — including a 7th-century pectoral cross and embroidered vestments — survive in the cathedral museum.</p>
+            
+            <h2>Architecture</h2>
+            
+            <p>Durham's nave is a masterpiece of Romanesque architecture. The massive circular pillars, alternating with compound piers, are decorated with geometric patterns — zigzags, lozenges, spirals — carved deeply into the stone. These are not mere decoration but expressions of Norman power and permanence.</p>
+            
+            <p>The ribbed vaulting of the nave (c. 1130) was revolutionary. Before Durham, most large churches had wooden roofs or groin vaults. The pointed transverse arches here distribute weight more efficiently, allowing for larger windows and thinner walls. This technology would define Gothic architecture for the next four centuries.</p>
+            
+            <p>The Galilee Chapel, added at the west end around 1175, offers a striking contrast — delicate, almost Moorish arches in a lighter Transitional style. It houses Bede's tomb and a rare 12th-century wall painting of St Cuthbert.</p>
+            
+            <h2>The Road Connection</h2>
+            
+            <p>Durham has sat astride the Great North Road since Roman times. The medieval city grew wealthy from pilgrims travelling to Cuthbert's shrine, and the Prince-Bishops of Durham controlled the surrounding lands as a virtually independent state — a buffer between England and Scotland.</p>
+            
+            <p>Today the A1(M) passes just east of the city. From the motorway, the cathedral towers are visible across the valley — a glimpse that has drawn travellers aside for a thousand years.</p>
+            
+            <div class="info-box">
+                <h3>Visitor Information</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>Address</label>
+                        The College, Durham DH1 3EH
+                    </div>
+                    <div class="info-item">
+                        <label>Opening Hours</label>
+                        Mon–Sat 10am–4pm, Sun 12–4pm
+                    </div>
+                    <div class="info-item">
+                        <label>Admission</label>
+                        Free (donations requested, tower £5)
+                    </div>
+                    <div class="info-item">
+                        <label>Tower</label>
+                        325 steps, panoramic views
+                    </div>
+                    <div class="info-item">
+                        <label>Distance from A1(M)</label>
+                        1.5 miles (Junction 62)
+                    </div>
+                    <div class="info-item">
+                        <label>Parking</label>
+                        Park & Ride recommended
+                    </div>
+                </div>
+            </div>
+            
+            <p>Services continue daily, as they have for nine centuries. Evensong, sung by the cathedral choir, takes place most days at 5:15pm — one of the finest ways to experience this extraordinary building.</p>
+            
+            <nav class="church-nav">
+                <a href="../durham.html">
+                    <span class="label">Back to</span>
+                    <span class="title">Durham & Northumberland</span>
+                </a>
+                <a href="hexham-abbey.html" class="next">
+                    <span class="label">Next Church</span>
+                    <span class="title">Hexham Abbey</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    
+    <footer>
+        <p>Part of <a href="../index.html">Churches of the A1</a> — London to Edinburgh</p>
+    </footer>
+</body>
+</html>

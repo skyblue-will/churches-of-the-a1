@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St Mary Magdalene, Newark — Churches of the A1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --stone: #2d2a26;
+            --stone-light: #3d3a35;
+            --parchment: #f5f0e8;
+            --gold: #c9a227;
+            --gold-light: #e8d9a0;
+            --ruby: #8b2942;
+            --text: #1a1a1a;
+            --text-light: #5a5a5a;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Newsreader', Georgia, serif;
+            background: var(--parchment);
+            color: var(--text);
+            font-size: 19px;
+            line-height: 1.75;
+        }
+        
+        a { color: var(--ruby); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        nav {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            background: white;
+        }
+        
+        nav a { color: var(--text-light); }
+        nav a:hover { color: var(--ruby); text-decoration: none; }
+        
+        .nav-title { color: var(--text); font-weight: 500; }
+        
+        .church-hero {
+            background: linear-gradient(180deg, var(--stone) 0%, var(--stone-light) 100%);
+            color: var(--parchment);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        
+        .church-hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .church-region {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .church-hero h1 {
+            font-size: 2.75rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+        
+        .church-location {
+            font-size: 1.2rem;
+            color: var(--gold-light);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        
+        .church-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .church-meta span {
+            color: var(--gold);
+        }
+        
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        article {
+            padding: 4rem 0;
+        }
+        
+        article p {
+            margin-bottom: 1.5rem;
+        }
+        
+        article h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 3rem 0 1.5rem;
+            font-style: italic;
+        }
+        
+        .lead {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            border-left: 3px solid var(--gold);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .info-box {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        
+        .info-box h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .info-item {
+            font-size: 0.9rem;
+        }
+        
+        .info-item label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        
+        blockquote {
+            font-size: 1.35rem;
+            font-style: italic;
+            color: var(--ruby);
+            border-left: 3px solid var(--ruby);
+            padding-left: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        
+        blockquote cite {
+            display: block;
+            font-size: 0.85rem;
+            font-style: normal;
+            color: var(--text-light);
+            margin-top: 0.75rem;
+        }
+        
+        .image-placeholder {
+            background: linear-gradient(135deg, var(--stone) 0%, var(--stone-light) 100%);
+            border-radius: 8px;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 3rem;
+            margin: 2rem 0;
+        }
+        
+        .image-caption {
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: -1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .highlight-box {
+            background: #fef7e7;
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .highlight-box h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+        
+        .highlight-box p {
+            margin: 0;
+        }
+        
+        .church-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            margin-top: 3rem;
+        }
+        
+        .church-nav a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            max-width: 45%;
+        }
+        
+        .church-nav a:hover { color: var(--ruby); text-decoration: none; }
+        
+        .church-nav .label {
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+        
+        .church-nav .title {
+            font-family: 'Newsreader', serif;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+        
+        .church-nav a:hover .title { color: var(--ruby); }
+        .church-nav .next { text-align: right; }
+        
+        footer {
+            background: var(--stone);
+            color: var(--parchment);
+            padding: 2rem;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+        }
+        
+        footer a { color: var(--gold); }
+        
+        @media (max-width: 600px) {
+            .church-hero h1 { font-size: 2rem; }
+            .info-grid { grid-template-columns: 1fr; }
+            .church-meta { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html">← Churches of the A1</a>
+        <span class="nav-title">Nottinghamshire</span>
+        <a href="doncaster-minster.html">Next Church →</a>
+    </nav>
+    
+    <header class="church-hero">
+        <div class="church-hero-content">
+            <p class="church-region">Region III — Nottinghamshire</p>
+            <h1>St Mary Magdalene</h1>
+            <p class="church-location">Newark-on-Trent — Mile 130</p>
+            <div class="church-meta">
+                <div>Founded: <span>c. 1180</span></div>
+                <div>Style: <span>Decorated Gothic</span></div>
+                <div>Spire: <span>236 feet</span></div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <article>
+            <p class="lead">One of England's largest and finest parish churches, St Mary Magdalene dominates the Newark skyline with its soaring spire — a spire that still bears the scars of the English Civil War.</p>
+            
+            <div class="image-placeholder">⛪</div>
+            <p class="image-caption">The 236-foot spire of St Mary Magdalene, the tallest in Nottinghamshire</p>
+            
+            <p>Newark Parish Church is a building of superlatives. At 236 feet, its spire is the tallest in Nottinghamshire. The nave is among the widest in England. The church is Grade I listed, a designation reserved for buildings of "exceptional interest." And yet it remains, technically, a parish church — serving the people of Newark as it has since the 12th century.</p>
+            
+            <h2>The Civil War Spire</h2>
+            
+            <p>Newark was a Royalist stronghold during the English Civil War, besieged three times by Parliamentary forces between 1643 and 1646. The town held out, but not without cost — and St Mary's spire bears witness.</p>
+            
+            <div class="highlight-box">
+                <h4>The Cannonball Hole</h4>
+                <p>Visible from the town centre is a hole in the spire, said to have been made by a Parliamentarian cannonball (or musket ball, depending on the account) during the sieges. The hole was never repaired — a permanent reminder of the war that divided England. During the sieges, the spire itself served as a lookout post for the Royalist defenders.</p>
+            </div>
+            
+            <p>King Charles I was at Newark when he received news of the town's final surrender in May 1646. He was advised to flee, but instead he gave himself up to the Scottish army at nearby Southwell — beginning the chain of events that would lead to his execution three years later.</p>
+            
+            <h2>The Building</h2>
+            
+            <p>The church dates largely from the 14th and 15th centuries, built on the wealth of Newark's wool trade. The tower and spire were completed around 1340; the nave, with its extraordinarily wide span, was rebuilt in the 15th century with money from local merchants eager to display their piety (and prosperity).</p>
+            
+            <p>Inside, the medieval rood screen survives — one of the finest in England, with intricate fan vaulting. The painted panels, though faded, still show the apostles and saints. The brass eagle lectern dates from 1505, a gift from the Mering family.</p>
+            
+            <blockquote>
+                "A noble church in a noble town, with one of the finest spires in the kingdom."
+                <cite>— Nikolaus Pevsner, The Buildings of England</cite>
+            </blockquote>
+            
+            <h2>The Road Town</h2>
+            
+            <p>Newark owes its existence to the Great North Road. The name itself derives from "new work" — a reference to the fortifications built here in the late Saxon period. The town sits where the road crosses the River Trent, a strategic point since Roman times.</p>
+            
+            <p>By the coaching era, Newark was a major stopping point. The great coaching inns — the Clinton Arms, the Ram, the Kingston Arms — served travellers on the long journey north. The church tower, visible for miles across the flat Trent valley, guided them in.</p>
+            
+            <p>Today the A1 bypasses Newark to the east, but the old Great North Road (now the B6326) still runs past the church. The spire remains a landmark — and the cannonball hole remains a mystery: was it really Parliamentary artillery, or a later addition to an already romantic legend?</p>
+            
+            <div class="info-box">
+                <h3>Visitor Information</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>Address</label>
+                        Church Street, Newark NG24 1JD
+                    </div>
+                    <div class="info-item">
+                        <label>Opening Hours</label>
+                        Daily, 9am – 5pm (summer), 10am – 4pm (winter)
+                    </div>
+                    <div class="info-item">
+                        <label>Admission</label>
+                        Free (donations welcome)
+                    </div>
+                    <div class="info-item">
+                        <label>Rood Screen</label>
+                        Visible from nave
+                    </div>
+                    <div class="info-item">
+                        <label>Distance from A1</label>
+                        1 mile via A46/A617
+                    </div>
+                    <div class="info-item">
+                        <label>Parking</label>
+                        Town centre car parks
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="church-nav">
+                <a href="st-wulframs-grantham.html">
+                    <span class="label">Previous Church</span>
+                    <span class="title">St Wulfram's, Grantham</span>
+                </a>
+                <a href="doncaster-minster.html" class="next">
+                    <span class="label">Next Church</span>
+                    <span class="title">Doncaster Minster</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    
+    <footer>
+        <p>Part of <a href="../index.html">Churches of the A1</a> — London to Edinburgh</p>
+    </footer>
+</body>
+</html>
