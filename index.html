@@ -40,26 +40,24 @@
         
         /* Hero */
         .hero {
-            background: linear-gradient(to bottom, rgba(29,26,22,0.2), rgba(29,26,22,0.4)), 
-                        url('https://upload.wikimedia.org/wikipedia/commons/2/2c/York_Minster_by_night_-_geograph.org.uk_-_1497529.jpg');
-            background-size: cover;
-            background-position: center top;
+            background: var(--ink);
             padding: 5rem 2rem 4rem;
             text-align: center;
             position: relative;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
             color: var(--cream);
         }
         
         .hero h1 { 
-            color: #fff; 
-            text-shadow: 0 2px 20px rgba(0,0,0,0.7), 0 1px 3px rgba(0,0,0,0.9);
+            color: var(--cream); 
         }
-        .hero h1 em { color: var(--gold); text-shadow: 0 2px 20px rgba(0,0,0,0.7), 0 1px 3px rgba(0,0,0,0.9); }
+        .hero h1 em { color: var(--gold); }
         .hero-subtitle { 
-            color: #fff; 
-            text-shadow: 0 1px 10px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.9);
+            color: rgba(248,245,239,0.7);
         }
+        
+        /* Show the SVG illustration again */
+        .hero-illustration { display: block; }
         
         .hero::before {
             content: '';
@@ -74,16 +72,13 @@
             position: absolute;
             width: 120px;
             height: 120px;
-            opacity: 0.2;
+            opacity: 0.15;
             color: var(--gold);
         }
         .corner-flourish.top-left { top: 20px; left: 20px; }
         .corner-flourish.top-right { top: 20px; right: 20px; transform: scaleX(-1); }
         .corner-flourish.bottom-left { bottom: 20px; left: 20px; transform: scaleY(-1); }
         .corner-flourish.bottom-right { bottom: 20px; right: 20px; transform: scale(-1); }
-        
-        /* Hide hero illustration when we have background image */
-        .hero-illustration { display: none; }
         
         .hero-content {
             position: relative;
