@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>York Minster — Churches of the A1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --stone: #2d2a26;
+            --stone-light: #3d3a35;
+            --parchment: #f5f0e8;
+            --gold: #c9a227;
+            --gold-light: #e8d9a0;
+            --ruby: #8b2942;
+            --sapphire: #1e3a5f;
+            --text: #1a1a1a;
+            --text-light: #5a5a5a;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Newsreader', Georgia, serif;
+            background: var(--parchment);
+            color: var(--text);
+            font-size: 19px;
+            line-height: 1.75;
+        }
+        
+        a { color: var(--ruby); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        nav {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            background: white;
+        }
+        
+        nav a { color: var(--text-light); }
+        nav a:hover { color: var(--ruby); text-decoration: none; }
+        
+        .nav-title { color: var(--text); font-weight: 500; }
+        
+        .church-hero {
+            background: linear-gradient(180deg, var(--stone) 0%, var(--stone-light) 100%);
+            color: var(--parchment);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        
+        .church-hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .church-region {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .church-hero h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+        
+        .church-location {
+            font-size: 1.2rem;
+            color: var(--gold-light);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        
+        .church-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .church-meta span {
+            color: var(--gold);
+        }
+        
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        article {
+            padding: 4rem 0;
+        }
+        
+        article p {
+            margin-bottom: 1.5rem;
+        }
+        
+        article h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 3rem 0 1.5rem;
+            font-style: italic;
+        }
+        
+        .lead {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            border-left: 3px solid var(--gold);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .info-box {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        
+        .info-box h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .info-item {
+            font-size: 0.9rem;
+        }
+        
+        .info-item label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        
+        blockquote {
+            font-size: 1.35rem;
+            font-style: italic;
+            color: var(--ruby);
+            border-left: 3px solid var(--ruby);
+            padding-left: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        
+        blockquote cite {
+            display: block;
+            font-size: 0.85rem;
+            font-style: normal;
+            color: var(--text-light);
+            margin-top: 0.75rem;
+        }
+        
+        .image-placeholder {
+            background: linear-gradient(135deg, var(--stone) 0%, var(--stone-light) 100%);
+            border-radius: 8px;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 3rem;
+            margin: 2rem 0;
+        }
+        
+        .image-caption {
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: -1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            color: white;
+        }
+        
+        .highlight-box h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .highlight-box p {
+            margin: 0;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .highlight-box .stat {
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline {
+            margin: 2rem 0;
+            padding-left: 2rem;
+            border-left: 2px solid var(--gold);
+        }
+        
+        .timeline-item {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.35rem;
+            top: 0.5rem;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+        
+        .timeline-date {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--ruby);
+            font-weight: 600;
+        }
+        
+        .timeline-text {
+            margin: 0.25rem 0 0;
+        }
+        
+        .church-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            margin-top: 3rem;
+        }
+        
+        .church-nav a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            max-width: 45%;
+        }
+        
+        .church-nav a:hover { color: var(--ruby); text-decoration: none; }
+        
+        .church-nav .label {
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+        
+        .church-nav .title {
+            font-family: 'Newsreader', serif;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+        
+        .church-nav a:hover .title { color: var(--ruby); }
+        .church-nav .next { text-align: right; }
+        
+        footer {
+            background: var(--stone);
+            color: var(--parchment);
+            padding: 2rem;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+        }
+        
+        footer a { color: var(--gold); }
+        
+        @media (max-width: 600px) {
+            .church-hero h1 { font-size: 2.25rem; }
+            .info-grid { grid-template-columns: 1fr; }
+            .church-meta { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html">← Churches of the A1</a>
+        <span class="nav-title">North Yorkshire</span>
+        <a href="ripon-cathedral.html">Next Church →</a>
+    </nav>
+    
+    <header class="church-hero">
+        <div class="church-hero-content">
+            <p class="church-region">Region IV — North Yorkshire</p>
+            <h1>York Minster</h1>
+            <p class="church-location">York — Mile 195</p>
+            <div class="church-meta">
+                <div>Founded: <span>627 AD</span></div>
+                <div>Style: <span>Gothic</span></div>
+                <div>Length: <span>524 feet</span></div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <article>
+            <p class="lead">The largest Gothic cathedral in Northern Europe, York Minster stands where emperors were made and kings baptised. Its Great East Window — the size of a tennis court — contains the largest expanse of medieval stained glass in Britain.</p>
+            
+            <div class="image-placeholder">🏰</div>
+            <p class="image-caption">York Minster's twin western towers, completed in 1472 after 250 years of construction</p>
+            
+            <p>York Minster is not merely a cathedral. It is a statement — of power, of faith, of the long continuity of English Christianity. The site has been sacred for nearly 2,000 years, and the building itself represents 250 years of continuous construction, from 1220 to 1472.</p>
+            
+            <h2>Where an Emperor Was Made</h2>
+            
+            <p>In 306 AD, the Roman Emperor Constantius I died in York — then called Eboracum. His son, present with the army, was immediately proclaimed emperor by the legions. That son was Constantine, later Constantine the Great, the first Christian emperor of Rome.</p>
+            
+            <p>Constantine would go on to legalise Christianity throughout the Roman Empire, convene the Council of Nicaea, and found Constantinople. But his imperial career began here, in a military fortress in the north of Britain. A statue of Constantine sits outside the Minster today, marking the spot where the Christian world was arguably born.</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">306 AD</div>
+                    <p class="timeline-text">Constantine proclaimed emperor in York</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">627 AD</div>
+                    <p class="timeline-text">First church built for baptism of King Edwin of Northumbria</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">1220</div>
+                    <p class="timeline-text">Construction of present Gothic cathedral begins</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">1405–1408</div>
+                    <p class="timeline-text">Great East Window created by John Thornton</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">1472</div>
+                    <p class="timeline-text">Western towers completed; building essentially finished</p>
+                </div>
+            </div>
+            
+            <h2>The Great East Window</h2>
+            
+            <div class="highlight-box">
+                <h4>Britain's Largest Medieval Window</h4>
+                <div class="stat">2,000 sq ft</div>
+                <p>The Great East Window, created between 1405 and 1408 by master glazier John Thornton of Coventry, depicts the beginning and end of the world — from Genesis to Revelation. At the size of a tennis court, it contains 117 panels and over 1 million pieces of glass. A recent 10-year restoration project cleaned and conserved every piece.</p>
+            </div>
+            
+            <p>The window is overwhelming in person. Standing in the choir, the east end of the cathedral is a wall of light and colour — blues, reds, golds depicting the Creation, the Fall, the lives of saints, and the Apocalypse. John Thornton was paid £56 for the work (and a £10 bonus for finishing on time), equivalent to several years' wages for a skilled craftsman.</p>
+            
+            <h2>The Building</h2>
+            
+            <p>York Minster is 524 feet long and 249 feet wide at the transepts — one of the largest medieval buildings in Europe. The central tower rises 197 feet; the western towers reach 174 feet. Inside, the nave is 100 feet high, its ribbed vaulting creating a sense of infinite vertical space.</p>
+            
+            <p>The Chapter House, completed around 1290, is one of the finest in England — an octagonal space with no central pillar, its ceiling supported by ingenious medieval engineering. The windows are filled with grisaille glass (grey-toned patterned glass), creating an ethereal silver light.</p>
+            
+            <blockquote>
+                "York Minster is to be ranked among the finest productions of the art of man."
+                <cite>— John Britton, Cathedral Antiquities, 1819</cite>
+            </blockquote>
+            
+            <h2>The Road Connection</h2>
+            
+            <p>York has been a crossroads since Roman times. The A1 (following the line of the Roman Ermine Street and Dere Street) passes to the west of the city, but the old Great North Road ran directly through — and still does, as the A19. Medieval travellers approaching from the south would have seen the Minster towers from miles away, rising above the flat Vale of York.</p>
+            
+            <p>The city walls, almost complete, can be walked in about two hours. The Minster stands at their heart, visible from every approach — as it was designed to be.</p>
+            
+            <div class="info-box">
+                <h3>Visitor Information</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>Address</label>
+                        Deangate, York YO1 7HH
+                    </div>
+                    <div class="info-item">
+                        <label>Opening Hours</label>
+                        Mon–Sat 9am–4:30pm, Sun 12:30–3pm
+                    </div>
+                    <div class="info-item">
+                        <label>Admission</label>
+                        £16 (includes tower access)
+                    </div>
+                    <div class="info-item">
+                        <label>Tower</label>
+                        275 steps, panoramic views
+                    </div>
+                    <div class="info-item">
+                        <label>Distance from A1(M)</label>
+                        10 miles via A59
+                    </div>
+                    <div class="info-item">
+                        <label>Parking</label>
+                        Park & Ride recommended
+                    </div>
+                </div>
+            </div>
+            
+            <p>Evensong is sung daily (except Monday) at 5:15pm — one of the finest ways to experience the building. The choir is among the best in England, and the acoustics make the most of the vast space.</p>
+            
+            <nav class="church-nav">
+                <a href="../yorkshire.html">
+                    <span class="label">Back to</span>
+                    <span class="title">North Yorkshire</span>
+                </a>
+                <a href="ripon-cathedral.html" class="next">
+                    <span class="label">Next Church</span>
+                    <span class="title">Ripon Cathedral</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    
+    <footer>
+        <p>Part of <a href="../index.html">Churches of the A1</a> — London to Edinburgh</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Hallows by the Tower — Churches of the A1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --stone: #2d2a26;
+            --stone-light: #3d3a35;
+            --parchment: #f5f0e8;
+            --gold: #c9a227;
+            --gold-light: #e8d9a0;
+            --ruby: #8b2942;
+            --text: #1a1a1a;
+            --text-light: #5a5a5a;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Newsreader', Georgia, serif;
+            background: var(--parchment);
+            color: var(--text);
+            font-size: 19px;
+            line-height: 1.75;
+        }
+        
+        a { color: var(--ruby); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        nav {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            background: white;
+        }
+        
+        nav a { color: var(--text-light); }
+        nav a:hover { color: var(--ruby); text-decoration: none; }
+        
+        .nav-title { color: var(--text); font-weight: 500; }
+        
+        .church-hero {
+            background: linear-gradient(180deg, var(--stone) 0%, var(--stone-light) 100%);
+            color: var(--parchment);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        
+        .church-hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .church-region {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .church-hero h1 {
+            font-size: 2.75rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+        
+        .church-location {
+            font-size: 1.2rem;
+            color: var(--gold-light);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        
+        .church-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .church-meta span {
+            color: var(--gold);
+        }
+        
+        .oldest-badge {
+            display: inline-block;
+            background: var(--ruby);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.75rem;
+            border-radius: 3px;
+            margin-top: 1.5rem;
+        }
+        
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        article {
+            padding: 4rem 0;
+        }
+        
+        article p {
+            margin-bottom: 1.5rem;
+        }
+        
+        article h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 3rem 0 1.5rem;
+            font-style: italic;
+        }
+        
+        .lead {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            border-left: 3px solid var(--gold);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .info-box {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        
+        .info-box h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .info-item {
+            font-size: 0.9rem;
+        }
+        
+        .info-item label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        
+        blockquote {
+            font-size: 1.35rem;
+            font-style: italic;
+            color: var(--ruby);
+            border-left: 3px solid var(--ruby);
+            padding-left: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        
+        blockquote cite {
+            display: block;
+            font-size: 0.85rem;
+            font-style: normal;
+            color: var(--text-light);
+            margin-top: 0.75rem;
+        }
+        
+        .image-placeholder {
+            background: linear-gradient(135deg, var(--stone) 0%, var(--stone-light) 100%);
+            border-radius: 8px;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 3rem;
+            margin: 2rem 0;
+        }
+        
+        .image-caption {
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: -1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .layers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .layer-card {
+            background: white;
+            padding: 1.25rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .layer-card .era {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+        
+        .layer-card h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            color: var(--ruby);
+        }
+        
+        .layer-card p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+        
+        .church-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            margin-top: 3rem;
+        }
+        
+        .church-nav a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            max-width: 45%;
+        }
+        
+        .church-nav a:hover { color: var(--ruby); text-decoration: none; }
+        
+        .church-nav .label {
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+        
+        .church-nav .title {
+            font-family: 'Newsreader', serif;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+        
+        .church-nav a:hover .title { color: var(--ruby); }
+        .church-nav .next { text-align: right; }
+        
+        footer {
+            background: var(--stone);
+            color: var(--parchment);
+            padding: 2rem;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+        }
+        
+        footer a { color: var(--gold); }
+        
+        @media (max-width: 600px) {
+            .church-hero h1 { font-size: 2rem; }
+            .info-grid { grid-template-columns: 1fr; }
+            .layers-grid { grid-template-columns: 1fr; }
+            .church-meta { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html">← Churches of the A1</a>
+        <span class="nav-title">London</span>
+        <a href="st-bartholomew.html">Next Church →</a>
+    </nav>
+    
+    <header class="church-hero">
+        <div class="church-hero-content">
+            <p class="church-region">Region I — London</p>
+            <h1>All Hallows by the Tower</h1>
+            <p class="church-location">Tower Hill, City of London — Mile 0</p>
+            <div class="church-meta">
+                <div>Founded: <span>675 AD</span></div>
+                <div>Style: <span>Mixed (Saxon–20th C)</span></div>
+            </div>
+            <div class="oldest-badge">Oldest Church in the City of London</div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <article>
+            <p class="lead">Three hundred years before the Tower of London was built, there was already a church here. All Hallows by the Tower is the oldest church in the City of London — and the starting point for our journey north.</p>
+            
+            <div class="image-placeholder">⛪</div>
+            <p class="image-caption">All Hallows, with the Tower of London visible behind</p>
+            
+            <p>Founded in 675 AD by the Abbey of Barking, All Hallows has witnessed nearly 1,400 years of London history. The church predates the Norman Conquest by four centuries. When William the Conqueror began building his great fortress next door in 1078, All Hallows was already ancient.</p>
+            
+            <p>The name "All Hallows" means "All Saints" — the church is dedicated to all the saints and martyrs. "By the Tower" distinguishes it from the dozen other All Hallows churches that once stood in London.</p>
+            
+            <h2>The Layers of History</h2>
+            
+            <p>Few buildings in Britain show their archaeological layers as clearly as All Hallows. Dig down and you pass through 2,000 years:</p>
+            
+            <div class="layers-grid">
+                <div class="layer-card">
+                    <div class="era">Roman</div>
+                    <h4>1st–4th Century</h4>
+                    <p>A tessellated pavement from a Roman house survives in the crypt</p>
+                </div>
+                <div class="layer-card">
+                    <div class="era">Saxon</div>
+                    <h4>7th Century</h4>
+                    <p>The original arch from 675 AD still stands in the nave</p>
+                </div>
+                <div class="layer-card">
+                    <div class="era">Modern</div>
+                    <h4>20th Century</h4>
+                    <p>Rebuilt after WWII bombing, incorporating medieval fragments</p>
+                </div>
+            </div>
+            
+            <p>The Saxon arch, visible at the west end of the nave, is believed to be the oldest surviving arch in the City. Built when England was still a patchwork of competing kingdoms, it has stood through Viking raids, Norman conquest, plague, fire, and blitz.</p>
+            
+            <h2>Fire and Blitz</h2>
+            
+            <p>All Hallows has twice been saved by extraordinary luck — or providence.</p>
+            
+            <p>In 1666, the Great Fire of London destroyed 87 churches. All Hallows survived because Samuel Pepys's naval colleague, Admiral Sir William Penn, had the buildings between the church and the fire pulled down, creating a firebreak. Pepys himself watched the fire from All Hallows' tower, recording the horrific scene in his diary.</p>
+            
+            <blockquote>
+                "I up to the top of Barking steeple, and there saw the saddest sight of desolation that I ever saw."
+                <cite>— Samuel Pepys, 2 September 1666</cite>
+            </blockquote>
+            
+            <p>Less fortunate in 1940, the church was gutted by German incendiary bombs. The medieval interior was destroyed, but the Saxon arch and some medieval brasses survived. The postwar rebuilding, completed in 1957, incorporated these fragments into a new structure — a church that is both ancient and modern.</p>
+            
+            <h2>Notable Connections</h2>
+            
+            <p><strong>William Penn</strong>, founder of Pennsylvania, was baptised here in 1644 — the baptismal font still exists. <strong>John Quincy Adams</strong>, sixth President of the United States, was married here in 1797. The executed bodies of Thomas More, John Fisher, and Archbishop Laud were all brought to All Hallows after their beheading at the Tower.</p>
+            
+            <p>Today the church serves the City of London's financial community, offering daily services, a quiet space for reflection, and a remarkable museum in the crypt where Roman and Saxon artefacts sit alongside medieval brasses and Civil War armour.</p>
+            
+            <h2>The Journey Begins</h2>
+            
+            <p>All Hallows marks the southern end of our journey. The Great North Road — now the A1 — began at the edge of the City, just yards from here. Travellers heading north would pass the Tower, cross London's fields, and begin the long journey to Edinburgh.</p>
+            
+            <p>From this ancient church, 410 miles of road stretch ahead.</p>
+            
+            <div class="info-box">
+                <h3>Visitor Information</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>Address</label>
+                        Byward Street, London EC3R 5BJ
+                    </div>
+                    <div class="info-item">
+                        <label>Opening Hours</label>
+                        Mon–Fri 10am–5pm, Sat–Sun 10am–4pm
+                    </div>
+                    <div class="info-item">
+                        <label>Admission</label>
+                        Free (crypt museum £5)
+                    </div>
+                    <div class="info-item">
+                        <label>Crypt</label>
+                        Roman pavement, Saxon arch, museum
+                    </div>
+                    <div class="info-item">
+                        <label>Nearest Tube</label>
+                        Tower Hill (District/Circle)
+                    </div>
+                    <div class="info-item">
+                        <label>Mile Marker</label>
+                        0 — start of the A1
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="church-nav">
+                <a href="../index.html">
+                    <span class="label">Home</span>
+                    <span class="title">Churches of the A1</span>
+                </a>
+                <a href="st-bartholomew.html" class="next">
+                    <span class="label">Next Church</span>
+                    <span class="title">St Bartholomew-the-Great</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    
+    <footer>
+        <p>Part of <a href="../index.html">Churches of the A1</a> — London to Edinburgh</p>
+    </footer>
+</body>
+</html>
