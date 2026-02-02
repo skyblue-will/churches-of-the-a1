@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Churches of the A1 — A Journey Through Sacred England</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --stone: #2d2a26;
+            --stone-light: #3d3a35;
+            --parchment: #f5f0e8;
+            --gold: #c9a227;
+            --gold-light: #e8d9a0;
+            --ruby: #8b2942;
+            --sapphire: #1e3a5f;
+            --text: #1a1a1a;
+            --text-light: #5a5a5a;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Newsreader', Georgia, serif;
+            background: var(--parchment);
+            color: var(--text);
+            font-size: 19px;
+            line-height: 1.75;
+        }
+        
+        a { color: var(--ruby); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(180deg, var(--stone) 0%, var(--stone-light) 100%);
+            color: var(--parchment);
+            padding: 6rem 2rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L30 60M0 30L60 30' stroke='%23ffffff' stroke-opacity='0.03' stroke-width='1'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .hero h1 span {
+            font-style: normal;
+            color: var(--gold);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--gold-light);
+            max-width: 550px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+        }
+        
+        .hero-meta {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        /* Route line decoration */
+        .route-line {
+            width: 2px;
+            height: 80px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .route-line::before {
+            content: '✟';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        /* Introduction */
+        .intro {
+            padding: 5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .intro p {
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            text-align: center;
+        }
+        
+        .intro p:first-of-type::first-letter {
+            font-size: 4rem;
+            float: left;
+            line-height: 1;
+            padding-right: 0.5rem;
+            color: var(--ruby);
+            font-weight: 500;
+        }
+        
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin: 3rem 0;
+            padding: 2rem 0;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--ruby);
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+        
+        /* Regions */
+        .regions {
+            padding: 4rem 0;
+        }
+        
+        .regions-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .regions-header h2 {
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+        
+        .regions-header p {
+            color: var(--text-light);
+        }
+        
+        .region-list {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .region-card {
+            display: grid;
+            grid-template-columns: 80px 1fr auto;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .region-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-decoration: none;
+        }
+        
+        .region-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-light);
+        }
+        
+        .region-miles {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--ruby);
+        }
+        
+        .region-info h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        
+        .region-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+        
+        .region-count {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            background: var(--parchment);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+        
+        .region-count strong {
+            color: var(--ruby);
+            font-weight: 600;
+        }
+        
+        /* Featured Church */
+        .featured {
+            padding: 5rem 0;
+            background: white;
+            margin: 4rem 0;
+        }
+        
+        .featured-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .featured-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .featured h2 {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+        
+        .featured-location {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+        
+        .featured p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .featured-image {
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--stone) 0%, var(--stone-light) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 4rem;
+        }
+        
+        /* Map Section */
+        .map-section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .map-section h2 {
+            font-size: 1.75rem;
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        
+        .map-placeholder {
+            max-width: 600px;
+            margin: 0 auto;
+            aspect-ratio: 3/4;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        .map-placeholder svg {
+            width: 300px;
+            height: auto;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--stone);
+            color: var(--parchment);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        footer h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        footer p {
+            opacity: 0.7;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            font-size: 0.95rem;
+        }
+        
+        footer a {
+            color: var(--gold);
+        }
+        
+        .footer-note {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            opacity: 0.4;
+            margin-top: 3rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .stats { flex-direction: column; gap: 2rem; }
+            .region-card { grid-template-columns: 1fr; text-align: center; }
+            .region-miles { display: none; }
+            .featured-inner { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <p class="hero-label">A Sacred Journey</p>
+            <h1>Churches of the <span>A1</span></h1>
+            <p class="hero-subtitle">From London to Edinburgh, 410 miles of ancient stones, soaring spires, and a thousand years of faith</p>
+            <p class="hero-meta">The Great North Road — Britain's oldest highway</p>
+        </div>
+        <div class="route-line"></div>
+    </header>
+    
+    <section class="intro">
+        <div class="container">
+            <p>The A1 is more than a road. It is a spine of stone that has carried pilgrims, kings, and armies for two millennia — from the Roman legions who first carved it into the landscape, to the medieval travellers who stopped to pray at wayside chapels, to the modern drivers who pass, often unknowing, the most remarkable collection of sacred architecture in Britain.</p>
+            <p>This is a guide to those churches. Not every chapel and meeting house, but the ones that matter — the ones that have shaped history, sheltered saints, and stood witness to the long story of these islands.</p>
+            
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">410</div>
+                    <div class="stat-label">Miles</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Historic Churches</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">1000</div>
+                    <div class="stat-label">Years of History</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="regions">
+        <div class="container">
+            <div class="regions-header">
+                <h2>The Journey North</h2>
+                <p>Explore by region, from London to Edinburgh</p>
+            </div>
+            
+            <div class="region-list">
+                <a href="london.html" class="region-card">
+                    <div>
+                        <div class="region-number">Region I</div>
+                        <div class="region-miles">0–25</div>
+                    </div>
+                    <div class="region-info">
+                        <h3>London & Hertfordshire</h3>
+                        <p>From the City's ancient churches to the estates of the north</p>
+                    </div>
+                    <div class="region-count"><strong>12</strong> churches</div>
+                </a>
+                
+                <a href="eastern.html" class="region-card">
+                    <div>
+                        <div class="region-number">Region II</div>
+                        <div class="region-miles">25–120</div>
+                    </div>
+                    <div class="region-info">
+                        <h3>Cambridgeshire & Lincolnshire</h3>
+                        <p>Flat lands, big skies, and some of England's finest wool churches</p>
+                    </div>
+                    <div class="region-count"><strong>15</strong> churches</div>
+                </a>
+                
+                <a href="midlands.html" class="region-card">
+                    <div>
+                        <div class="region-number">Region III</div>
+                        <div class="region-miles">120–180</div>
+                    </div>
+                    <div class="region-info">
+                        <h3>Nottinghamshire & South Yorkshire</h3>
+                        <p>Newark's Civil War scars and the industrial north begins</p>
+                    </div>
+                    <div class="region-count"><strong>8</strong> churches</div>
+                </a>
+                
+                <a href="yorkshire.html" class="region-card">
+                    <div>
+                        <div class="region-number">Region IV</div>
+                        <div class="region-miles">180–250</div>
+                    </div>
+                    <div class="region-info">
+                        <h3>North Yorkshire</h3>
+                        <p>The Dales, the Moors, and York's medieval magnificence</p>
+                    </div>
+                    <div class="region-count"><strong>10</strong> churches</div>
+                </a>
+                
+                <a href="durham.html" class="region-card">
+                    <div>
+                        <div class="region-number">Region V</div>
+                        <div class="region-miles">250–330</div>
+                    </div>
+                    <div class="region-info">
+                        <h3>County Durham & Northumberland</h3>
+                        <p>The land of saints — Cuthbert, Bede, and the Angel of the North</p>
+                    </div>
+                    <div class="region-count"><strong>9</strong> churches</div>
+                </a>
+                
+                <a href="borders.html" class="region-card">
+                    <div>
+                        <div class="region-number">Region VI</div>
+                        <div class="region-miles">330–410</div>
+                    </div>
+                    <div class="region-info">
+                        <h3>Scottish Borders & Edinburgh</h3>
+                        <p>Border abbeys, reformation battles, and journey's end</p>
+                    </div>
+                    <div class="region-count"><strong>8</strong> churches</div>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="featured">
+        <div class="featured-inner">
+            <div>
+                <p class="featured-label">Featured Church</p>
+                <h2>St Wulfram's, Grantham</h2>
+                <p class="featured-location">Lincolnshire — Mile 110</p>
+                <p>A cathedral in all but name. St Wulfram's 282-foot spire has guided travellers on the Great North Road since the 14th century. Its gargoyles are a gallery of medieval face-pulling; its library, chained books from 1598.</p>
+                <p>Margaret Thatcher was baptised here. Isaac Newton worshipped here as a schoolboy. The church has seen 700 years of the road pass by its door.</p>
+                <a href="churches/st-wulframs-grantham.html">Read the full story →</a>
+            </div>
+            <div class="featured-image">⛪</div>
+        </div>
+    </section>
+    
+    <section class="map-section">
+        <div class="container">
+            <h2>The Route</h2>
+            <div class="map-placeholder">
+                <svg viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Simplified UK outline with A1 route -->
+                    <path d="M100 20 Q80 60, 90 100 Q95 140, 100 180 Q102 220, 98 260 Q95 300, 100 340 Q105 360, 100 380" 
+                          stroke="#8b2942" stroke-width="3" fill="none" stroke-dasharray="8,4"/>
+                    
+                    <!-- Markers -->
+                    <circle cx="100" cy="380" r="6" fill="#8b2942"/>
+                    <text x="115" y="385" font-family="Inter" font-size="10" fill="#5a5a5a">London</text>
+                    
+                    <circle cx="100" cy="280" r="4" fill="#c9a227"/>
+                    <text x="115" y="285" font-family="Inter" font-size="9" fill="#5a5a5a">Grantham</text>
+                    
+                    <circle cx="98" cy="200" r="4" fill="#c9a227"/>
+                    <text x="113" y="205" font-family="Inter" font-size="9" fill="#5a5a5a">York</text>
+                    
+                    <circle cx="95" cy="120" r="4" fill="#c9a227"/>
+                    <text x="110" y="125" font-family="Inter" font-size="9" fill="#5a5a5a">Durham</text>
+                    
+                    <circle cx="100" cy="20" r="6" fill="#8b2942"/>
+                    <text x="115" y="25" font-family="Inter" font-size="10" fill="#5a5a5a">Edinburgh</text>
+                </svg>
+                <p>410 miles of sacred history</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <h3>A Living Archive</h3>
+        <p>This collection grows as we travel the road. Each church has a story; each story connects to the next, like the stones of an ancient wall.</p>
+        <p><a href="about.html">About this project</a> · <a href="contribute.html">Contribute</a></p>
+        <p class="footer-note">Churches of the A1 — London to Edinburgh</p>
+    </footer>
+</body>
+</html>

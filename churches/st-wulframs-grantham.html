@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St Wulfram's, Grantham — Churches of the A1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --stone: #2d2a26;
+            --stone-light: #3d3a35;
+            --parchment: #f5f0e8;
+            --gold: #c9a227;
+            --gold-light: #e8d9a0;
+            --ruby: #8b2942;
+            --sapphire: #1e3a5f;
+            --text: #1a1a1a;
+            --text-light: #5a5a5a;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Newsreader', Georgia, serif;
+            background: var(--parchment);
+            color: var(--text);
+            font-size: 19px;
+            line-height: 1.75;
+        }
+        
+        a { color: var(--ruby); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        /* Nav */
+        nav {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            background: white;
+        }
+        
+        nav a { color: var(--text-light); }
+        nav a:hover { color: var(--ruby); text-decoration: none; }
+        
+        .nav-title { color: var(--text); font-weight: 500; }
+        
+        /* Hero */
+        .church-hero {
+            background: linear-gradient(180deg, var(--stone) 0%, var(--stone-light) 100%);
+            color: var(--parchment);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        
+        .church-hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .church-region {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .church-hero h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+        
+        .church-location {
+            font-size: 1.2rem;
+            color: var(--gold-light);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        
+        .church-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .church-meta span {
+            color: var(--gold);
+        }
+        
+        /* Content */
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        article {
+            padding: 4rem 0;
+        }
+        
+        article p {
+            margin-bottom: 1.5rem;
+        }
+        
+        article h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 3rem 0 1.5rem;
+            font-style: italic;
+        }
+        
+        .lead {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            border-left: 3px solid var(--gold);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        /* Info box */
+        .info-box {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        
+        .info-box h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .info-item {
+            font-size: 0.9rem;
+        }
+        
+        .info-item label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        
+        /* Quote */
+        blockquote {
+            font-size: 1.35rem;
+            font-style: italic;
+            color: var(--ruby);
+            border-left: 3px solid var(--ruby);
+            padding-left: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        
+        blockquote cite {
+            display: block;
+            font-size: 0.85rem;
+            font-style: normal;
+            color: var(--text-light);
+            margin-top: 0.75rem;
+        }
+        
+        /* Image placeholder */
+        .image-placeholder {
+            background: linear-gradient(135deg, var(--stone) 0%, var(--stone-light) 100%);
+            border-radius: 8px;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 3rem;
+            margin: 2rem 0;
+        }
+        
+        .image-caption {
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: -1rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Navigation */
+        .church-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            margin-top: 3rem;
+        }
+        
+        .church-nav a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            max-width: 45%;
+        }
+        
+        .church-nav a:hover { color: var(--ruby); text-decoration: none; }
+        
+        .church-nav .label {
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+        
+        .church-nav .title {
+            font-family: 'Newsreader', serif;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+        
+        .church-nav a:hover .title { color: var(--ruby); }
+        .church-nav .next { text-align: right; }
+        
+        /* Footer */
+        footer {
+            background: var(--stone);
+            color: var(--parchment);
+            padding: 2rem;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+        }
+        
+        footer a { color: var(--gold); }
+        
+        @media (max-width: 600px) {
+            .church-hero h1 { font-size: 2.25rem; }
+            .info-grid { grid-template-columns: 1fr; }
+            .church-meta { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html">← Churches of the A1</a>
+        <span class="nav-title">Lincolnshire</span>
+        <a href="newark-parish.html">Next Church →</a>
+    </nav>
+    
+    <header class="church-hero">
+        <div class="church-hero-content">
+            <p class="church-region">Region II — Lincolnshire</p>
+            <h1>St Wulfram's</h1>
+            <p class="church-location">Grantham, Lincolnshire — Mile 110</p>
+            <div class="church-meta">
+                <div>Founded: <span>c. 1180</span></div>
+                <div>Style: <span>Early English Gothic</span></div>
+                <div>Spire: <span>282 feet</span></div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <article>
+            <p class="lead">A cathedral in all but name, St Wulfram's has watched over the Great North Road for eight centuries. Its spire — the sixth tallest in England — has guided travellers since the 1300s, a stone finger pointing heavenward above the Lincolnshire plain.</p>
+            
+            <div class="image-placeholder">🏛️</div>
+            <p class="image-caption">The 282-foot spire of St Wulfram's, visible for miles across the flat Lincolnshire landscape</p>
+            
+            <p>The church is named for Wulfram of Sens, an 8th-century French archbishop who evangelised the Frisians. Why a church in Lincolnshire bears his name remains a mystery — there is no known connection between saint and town. The dedication may date from the Norman period, when French saints' cults were fashionable among the new aristocracy.</p>
+            
+            <h2>The Building</h2>
+            
+            <p>The earliest parts of the present church date to around 1180, but the building as it stands is largely 14th century. The tower and spire — the church's most distinctive feature — were completed around 1300. At 282 feet, the spire ranks sixth in England, after Salisbury, Norwich, Coventry (destroyed), Louth, and Lichfield.</p>
+            
+            <p>The exterior is notable for its remarkable collection of medieval carvings. Gargoyles and corbels crowd the walls — a gallery of grotesques, green men, and what can only be described as medieval face-pulling. Some are clearly meant to ward off evil; others seem to be pure whimsy.</p>
+            
+            <blockquote>
+                "The gargoyles of St Wulfram's are among the finest in England — a stone menagerie of the medieval imagination."
+                <cite>— Nikolaus Pevsner, The Buildings of England</cite>
+            </blockquote>
+            
+            <h2>The Chained Library</h2>
+            
+            <p>Above the south porch is one of England's oldest surviving chained libraries, founded in 1598 by the town's vicar, Francis Trigge. The books — 83 of them, including a 1472 Bible — remain chained to their original shelves, a reminder of an age when books were precious enough to secure.</p>
+            
+            <p>The library was intended for the use of "the vicars, the preachers, the gentlemen and their wives" of Grantham. Four centuries later, it remains intact, the chains rusted but unbroken.</p>
+            
+            <h2>Notable Connections</h2>
+            
+            <p>Two of Britain's most consequential figures have connections to St Wulfram's:</p>
+            
+            <p><strong>Isaac Newton</strong> worshipped here as a boy while attending the King's School next door (1655–1661). The school, founded in 1528, still operates from its original buildings beside the church. Newton carved his name into a windowsill; the graffito survives.</p>
+            
+            <p><strong>Margaret Thatcher</strong> was baptised in St Wulfram's in 1925. The future Prime Minister grew up in Grantham; her father Alfred Roberts was a local alderman and lay preacher (though Methodist, not Anglican). The baptism register is kept in the church archives.</p>
+            
+            <div class="info-box">
+                <h3>Visitor Information</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>Address</label>
+                        Church Street, Grantham NG31 6RR
+                    </div>
+                    <div class="info-item">
+                        <label>Opening Hours</label>
+                        Daily, 9am – 4pm
+                    </div>
+                    <div class="info-item">
+                        <label>Admission</label>
+                        Free (donations welcome)
+                    </div>
+                    <div class="info-item">
+                        <label>Chained Library</label>
+                        By appointment
+                    </div>
+                    <div class="info-item">
+                        <label>Distance from A1</label>
+                        0.3 miles (5 min walk)
+                    </div>
+                    <div class="info-item">
+                        <label>Parking</label>
+                        Town centre car parks
+                    </div>
+                </div>
+            </div>
+            
+            <h2>The Road Connection</h2>
+            
+            <p>Grantham has been a stopping point on the Great North Road for centuries. The Angel and Royal Inn, just yards from St Wulfram's, claims to be the oldest inn in England and hosted King John in 1213, Richard III in 1483, and countless travellers in between. The church tower served as a landmark for coaches approaching from either direction.</p>
+            
+            <p>Today the A1 bypasses the town, but the old road still runs past the church door. The spire remains visible from the modern highway — a glimpse of something older and more permanent than the traffic rushing by.</p>
+            
+            <nav class="church-nav">
+                <a href="../eastern.html">
+                    <span class="label">Back to</span>
+                    <span class="title">Cambridgeshire & Lincolnshire</span>
+                </a>
+                <a href="newark-parish.html" class="next">
+                    <span class="label">Next Church</span>
+                    <span class="title">Newark Parish Church</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    
+    <footer>
+        <p>Part of <a href="../index.html">Churches of the A1</a> — London to Edinburgh</p>
+    </footer>
+</body>
+</html>
