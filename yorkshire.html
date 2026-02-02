@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>North Yorkshire — Churches of the A1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --ink: #1a1814;
+            --ink-light: #3d3a35;
+            --cream: #f8f5ef;
+            --paper: #f0ebe0;
+            --gold: #b8941e;
+            --gold-dark: #8a6f16;
+            --sepia: #5c4a32;
+            --sepia-light: #8b7355;
+            --rust: #6b3d2e;
+            --text: #2d2a26;
+            --text-light: #5a554d;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: var(--cream);
+            color: var(--text);
+            font-size: 20px;
+            line-height: 1.8;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+        }
+        
+        a { color: var(--sepia); text-decoration: none; }
+        a:hover { text-decoration: underline; text-decoration-style: wavy; text-underline-offset: 3px; }
+        
+        /* Navigation */
+        .nav {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-home {
+            font-size: 0.85rem;
+            color: var(--sepia-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-home::before {
+            content: '←';
+        }
+        
+        .nav-title {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Hero */
+        .hero {
+            background: var(--paper);
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='0.015'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .hero-region {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            color: var(--ink);
+        }
+        
+        .hero-miles {
+            font-size: 1.1rem;
+            color: var(--sepia-light);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 0;
+        }
+        
+        .divider-line {
+            width: 60px;
+            height: 1px;
+            background: var(--sepia-light);
+            opacity: 0.3;
+        }
+        
+        .divider-icon {
+            color: var(--sepia-light);
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        /* Introduction */
+        .intro {
+            padding: 3rem 0 2rem;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        
+        .intro p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            hyphens: auto;
+        }
+        
+        .intro p:first-of-type::first-letter {
+            font-size: 4.5rem;
+            float: left;
+            line-height: 0.8;
+            padding-right: 0.75rem;
+            padding-top: 0.25rem;
+            color: var(--sepia);
+            font-weight: 500;
+        }
+        
+        /* Church Cards */
+        .churches {
+            padding: 2rem 0 4rem;
+        }
+        
+        .church-card {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        
+        .church-card:nth-child(even) {
+            grid-template-columns: 1fr 350px;
+        }
+        
+        .church-card:nth-child(even) .church-image {
+            order: 2;
+        }
+        
+        .church-card:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .church-image {
+            position: relative;
+        }
+        
+        .church-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+            filter: sepia(15%) contrast(1.05);
+        }
+        
+        .church-image::after {
+            content: '';
+            position: absolute;
+            top: 8px; left: 8px; right: -8px; bottom: -8px;
+            border: 1px solid rgba(0,0,0,0.1);
+            z-index: -1;
+        }
+        
+        .church-image figcaption {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-top: 0.75rem;
+            text-align: right;
+        }
+        
+        .church-content {
+            padding-top: 0.5rem;
+        }
+        
+        .church-mile {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .church-content h2 {
+            font-size: 1.75rem;
+            font-weight: 400;
+            margin-bottom: 0.25rem;
+            line-height: 1.2;
+        }
+        
+        .church-content h2 a {
+            color: inherit;
+        }
+        
+        .church-content h2 a:hover {
+            color: var(--sepia);
+        }
+        
+        .church-location {
+            font-size: 0.95rem;
+            color: var(--sepia-light);
+            font-style: italic;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        
+        .church-content p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.75;
+        }
+        
+        .church-facts {
+            margin-top: 1.5rem;
+            padding: 1rem 1.25rem;
+            background: white;
+            border-left: 3px solid var(--gold);
+        }
+        
+        .church-facts h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+        }
+        
+        .church-facts ul {
+            list-style: none;
+            font-size: 0.9rem;
+        }
+        
+        .church-facts li {
+            padding: 0.25rem 0;
+            border-bottom: 1px dotted rgba(0,0,0,0.1);
+        }
+        
+        .church-facts li:last-child {
+            border-bottom: none;
+        }
+        
+        .church-facts li strong {
+            color: var(--sepia);
+        }
+        
+        .read-more {
+            display: inline-block;
+            margin-top: 1rem;
+            font-style: italic;
+            color: var(--sepia);
+        }
+        
+        /* Map sidebar */
+        .region-map {
+            background: white;
+            padding: 2rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+        
+        .region-map h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .region-map svg {
+            width: 100%;
+            max-width: 400px;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--ink);
+            color: var(--cream);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        footer::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin-bottom: 3rem;
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-nav a {
+            color: var(--cream);
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+        
+        .footer-nav a:hover {
+            opacity: 1;
+            color: var(--gold);
+        }
+        
+        .footer-note {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            opacity: 0.3;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        /* Image credits */
+        .credits {
+            padding: 2rem;
+            background: var(--paper);
+            font-size: 0.8rem;
+            color: var(--text-light);
+            border-top: 1px solid rgba(0,0,0,0.08);
+        }
+        
+        .credits h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+        
+        .credits p {
+            line-height: 1.6;
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .church-card,
+            .church-card:nth-child(even) {
+                grid-template-columns: 1fr;
+            }
+            
+            .church-card:nth-child(even) .church-image {
+                order: 0;
+            }
+            
+            .church-image img {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .nav { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html" class="nav-home">All Regions</a>
+        <span class="nav-title">Churches of the A1</span>
+    </nav>
+    
+    <header class="hero">
+        <div class="hero-content">
+            <p class="hero-region">Region IV</p>
+            <h1>North Yorkshire</h1>
+            <p class="hero-miles">Miles 180–250</p>
+            <p class="hero-description">The Dales, the Moors, and York's medieval magnificence — where the Great North Road meets the spiritual heart of the North</p>
+        </div>
+        
+        <div class="divider">
+            <span class="divider-line"></span>
+            <span class="divider-icon">✟</span>
+            <span class="divider-line"></span>
+        </div>
+    </header>
+    
+    <section class="intro">
+        <div class="container">
+            <p>North Yorkshire is where the Great North Road transforms. Gone are the flat fens of Lincolnshire; here the land rises and folds, and the churches rise with it. This is Yorkshire's spiritual heartland — a landscape shaped by monasteries, by Vikings who settled to become Christians, by wool merchants who built churches as monuments to their prosperity, and by centuries of pilgrims walking north to the shrines of northern saints.</p>
+            <p>At the heart of it all stands York — the northern Rome, where Constantine was proclaimed emperor and where England's largest medieval cathedral still dominates the skyline. But venture beyond the city walls and you'll find treasures equally remarkable: the ancient crypt at Ripon where Wilfrid's bones once lay, the great medieval abbey at Selby where monks prayed for five centuries, and the twin-towered splendour of Beverley, a church that rivals any cathedral.</p>
+        </div>
+    </section>
+    
+    <section class="churches">
+        <div class="container">
+            
+            <!-- York Minster -->
+            <article class="church-card">
+                <figure class="church-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/York_Minster_from_M%26S.JPG" 
+                         alt="York Minster viewed from the south, showing the central tower and rose window">
+                    <figcaption>Photo: MatzeTrier / CC BY-SA</figcaption>
+                </figure>
+                <div class="church-content">
+                    <p class="church-mile">Mile 195</p>
+                    <h2><a href="churches/york-minster.html">York Minster</a></h2>
+                    <p class="church-location">York</p>
+                    <p>The Cathedral and Metropolitical Church of Saint Peter in York is the largest Gothic cathedral in Northern Europe. A church has stood here since 627, when King Edwin of Northumbria was baptised in a wooden chapel on this spot. The current building — 500 feet of soaring stone — took 250 years to complete.</p>
+                    <p>Constantine the Great was proclaimed Roman Emperor here in 306 AD. The Great East Window, the size of a tennis court, is the largest expanse of medieval stained glass in the world. The Five Sisters window contains 100,000 pieces of 13th-century glass.</p>
+                    <div class="church-facts">
+                        <h4>Notable Facts</h4>
+                        <ul>
+                            <li><strong>Founded:</strong> 627 AD</li>
+                            <li><strong>Current building:</strong> 1220–1472</li>
+                            <li><strong>Length:</strong> 524 feet (160m)</li>
+                            <li><strong>Central tower:</strong> 235 feet high</li>
+                        </ul>
+                    </div>
+                    <a href="churches/york-minster.html" class="read-more">Read the full history →</a>
+                </div>
+            </article>
+            
+            <!-- Selby Abbey -->
+            <article class="church-card">
+                <figure class="church-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Selby_Abbey_03.jpg" 
+                         alt="Selby Abbey's west front with its Norman doorway and Gothic window">
+                    <figcaption>Photo: Derek Dye / CC BY-SA</figcaption>
+                </figure>
+                <div class="church-content">
+                    <p class="church-mile">Mile 175</p>
+                    <h2>Selby Abbey</h2>
+                    <p class="church-location">Selby</p>
+                    <p>Founded in 1069 — just three years after the Norman Conquest — Selby Abbey is one of the few great monastic churches to survive the Dissolution intact. A Benedictine monk named Benedict of Auxerre founded the monastery after a vision led him to Selby, and for nearly five centuries monks kept the hours here.</p>
+                    <p>The building is a palimpsest of medieval architecture: Norman arches give way to Early English lancets, then to the flowing tracery of the Decorated period. The Washington Window contains the arms of the Washington family — ancestors of George Washington, whose coat of arms inspired the Stars and Stripes.</p>
+                    <div class="church-facts">
+                        <h4>Notable Facts</h4>
+                        <ul>
+                            <li><strong>Founded:</strong> 1069</li>
+                            <li><strong>Dissolved:</strong> 1539</li>
+                            <li><strong>Became parish church:</strong> 1618</li>
+                            <li><strong>Birthplace:</strong> Henry I (legend)</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Ripon Cathedral -->
+            <article class="church-card">
+                <figure class="church-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c6/Ripon_Cathedral_Exterior%2C_Nth_Yorkshire%2C_UK_-_Diliff.jpg" 
+                         alt="Ripon Cathedral's west front with its twin towers in Early English Gothic style">
+                    <figcaption>Photo: David Iliff / CC BY-SA</figcaption>
+                </figure>
+                <div class="church-content">
+                    <p class="church-mile">Mile 210</p>
+                    <h2>Ripon Cathedral</h2>
+                    <p class="church-location">Ripon</p>
+                    <p>Beneath the Gothic splendour of Ripon Cathedral lies one of the oldest Christian spaces in England: a tiny crypt built by Saint Wilfrid in 672 AD. For over 1,350 years, this chamber — barely room for a dozen people — has witnessed continuous Christian worship.</p>
+                    <p>Wilfrid brought stonemasons from France and Italy to build his great basilica, one of the first stone churches in the north. The current cathedral is the fourth on this site, its west front a masterpiece of Early English Gothic. The misericords, carved between 1489 and 1494, include a rabbit in a waistcoat — said to have inspired Lewis Carroll.</p>
+                    <div class="church-facts">
+                        <h4>Notable Facts</h4>
+                        <ul>
+                            <li><strong>Crypt:</strong> 672 AD (St Wilfrid)</li>
+                            <li><strong>West front:</strong> 1220</li>
+                            <li><strong>Cathedral status:</strong> 1836</li>
+                            <li><strong>Famous for:</strong> Anglo-Saxon crypt, misericords</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Beverley Minster -->
+            <article class="church-card">
+                <figure class="church-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Beverley_Minster_Exterior.jpg" 
+                         alt="Beverley Minster's magnificent Gothic exterior from the southwest">
+                    <figcaption>Photo: Michael D Beckwith / Public Domain</figcaption>
+                </figure>
+                <div class="church-content">
+                    <p class="church-mile">Mile 220</p>
+                    <h2>Beverley Minster</h2>
+                    <p class="church-location">Beverley, East Riding</p>
+                    <p>Larger than a third of England's cathedrals, Beverley Minster is a Gothic masterpiece that never achieved cathedral status — yet rivals any in the kingdom. It began as a monastery founded around 700 AD by John of Beverley, Bishop of York, whose tomb became a major pilgrimage centre after his canonisation in 1037.</p>
+                    <p>The Percy Tomb (c. 1340) is considered the finest decorated Gothic canopy in England. The misericords, 68 in total, form the largest collection of medieval choir carvings in the country. Kings from Æthelstan to Henry V came to pray here, and the Sanctuary Chair still stands — touch it, and you claimed sanctuary from the law.</p>
+                    <div class="church-facts">
+                        <h4>Notable Facts</h4>
+                        <ul>
+                            <li><strong>Founded:</strong> c. 700 AD</li>
+                            <li><strong>Current building:</strong> 1188–1420</li>
+                            <li><strong>Misericords:</strong> 68 (largest collection)</li>
+                            <li><strong>Percy Tomb:</strong> c. 1340</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+            
+        </div>
+    </section>
+    
+    <!-- Regional Map -->
+    <div class="region-map">
+        <h3>The Route Through Yorkshire</h3>
+        <svg viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#2d2a26" fill="none">
+                <!-- A1 Route line -->
+                <path d="M150 380 Q145 340 150 300 Q155 260 150 220 Q145 180 150 140 Q155 100 150 60 Q145 40 150 20" 
+                      stroke-width="2" stroke-dasharray="6,3" opacity="0.5"/>
+                
+                <!-- Region boundary suggestion -->
+                <path d="M50 350 Q80 300 70 250 Q60 200 80 150 Q100 100 80 50" stroke-width="0.5" opacity="0.2"/>
+                <path d="M250 350 Q220 300 230 250 Q240 200 220 150 Q200 100 220 50" stroke-width="0.5" opacity="0.2"/>
+                
+                <!-- Churches -->
+                <g stroke-width="0.8">
+                    <!-- Selby -->
+                    <circle cx="150" cy="340" r="4" fill="#b8941e"/>
+                    <text x="165" y="343" font-family="Cormorant Garamond" font-size="11" fill="#2d2a26">Selby Abbey</text>
+                    <text x="165" y="356" font-family="Inter" font-size="8" fill="#5a554d">Mile 175</text>
+                    
+                    <!-- York -->
+                    <circle cx="150" cy="260" r="6" fill="#2d2a26"/>
+                    <path d="M150 252 L150 247 M147 249 L153 249"/>
+                    <text x="165" y="262" font-family="Cormorant Garamond" font-size="12" fill="#2d2a26" font-weight="500">York Minster</text>
+                    <text x="165" y="275" font-family="Inter" font-size="8" fill="#5a554d">Mile 195</text>
+                    
+                    <!-- Ripon -->
+                    <circle cx="120" cy="180" r="4" fill="#b8941e"/>
+                    <text x="60" y="183" font-family="Cormorant Garamond" font-size="11" fill="#2d2a26">Ripon</text>
+                    <text x="60" y="196" font-family="Inter" font-size="8" fill="#5a554d">Mile 210</text>
+                    
+                    <!-- Beverley -->
+                    <circle cx="200" cy="220" r="4" fill="#b8941e"/>
+                    <text x="215" y="222" font-family="Cormorant Garamond" font-size="11" fill="#2d2a26">Beverley</text>
+                    <text x="215" y="235" font-family="Inter" font-size="8" fill="#5a554d">Mile 220</text>
+                </g>
+                
+                <!-- Direction markers -->
+                <text x="150" y="395" font-family="Inter" font-size="8" fill="#5a554d" text-anchor="middle">← London</text>
+                <text x="150" y="12" font-family="Inter" font-size="8" fill="#5a554d" text-anchor="middle">Durham →</text>
+                
+                <!-- Compass -->
+                <g transform="translate(40, 60)" stroke-width="0.5" opacity="0.4">
+                    <circle cx="0" cy="0" r="12"/>
+                    <path d="M0 -15 L0 15 M-15 0 L15 0"/>
+                    <path d="M0 -12 L2 -4 L0 -6 L-2 -4 Z" fill="#2d2a26"/>
+                    <text x="-2" y="-18" font-family="Inter" font-size="6">N</text>
+                </g>
+            </g>
+        </svg>
+    </div>
+    
+    <div class="credits">
+        <div class="container">
+            <h4>Image Credits</h4>
+            <p>York Minster: MatzeTrier, CC BY-SA 3.0. Selby Abbey: Derek Dye / Geograph, CC BY-SA 2.0. Ripon Cathedral: David Iliff, CC BY-SA 3.0. Beverley Minster: Michael D Beckwith, CC0 Public Domain. All images via Wikimedia Commons.</p>
+        </div>
+    </div>
+    
+    <footer>
+        <nav class="footer-nav">
+            <a href="midlands.html">← Region III: Nottinghamshire</a>
+            <a href="index.html">All Regions</a>
+            <a href="durham.html">Region V: Durham →</a>
+        </nav>
+        <p class="footer-note">Churches of the A1 — London to Edinburgh</p>
+    </footer>
+</body>
+</html>
