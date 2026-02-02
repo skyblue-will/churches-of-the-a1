@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contribute — Churches of the A1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --ink: #1a1814;
+            --ink-light: #3d3a35;
+            --cream: #f8f5ef;
+            --paper: #f0ebe0;
+            --gold: #b8941e;
+            --gold-dark: #8a6f16;
+            --sepia: #5c4a32;
+            --sepia-light: #8b7355;
+            --text: #2d2a26;
+            --text-light: #5a554d;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: var(--cream);
+            color: var(--text);
+            font-size: 20px;
+            line-height: 1.8;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+        }
+        
+        a { color: var(--sepia); text-decoration: none; }
+        a:hover { text-decoration: underline; text-decoration-style: wavy; text-underline-offset: 3px; }
+        
+        .nav {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-home {
+            font-size: 0.85rem;
+            color: var(--sepia-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-home::before { content: '←'; }
+        
+        .nav-title {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .hero {
+            background: var(--paper);
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='0.015'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--ink);
+        }
+        
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            max-width: 550px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 0;
+        }
+        
+        .divider-line {
+            width: 60px;
+            height: 1px;
+            background: var(--sepia-light);
+            opacity: 0.3;
+        }
+        
+        .divider-icon {
+            color: var(--sepia-light);
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .content {
+            padding: 3rem 0 4rem;
+        }
+        
+        .content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            hyphens: auto;
+        }
+        
+        .content p:first-of-type::first-letter {
+            font-size: 4.5rem;
+            float: left;
+            line-height: 0.8;
+            padding-right: 0.75rem;
+            padding-top: 0.25rem;
+            color: var(--sepia);
+            font-weight: 500;
+        }
+        
+        .content h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin: 3rem 0 1.5rem;
+            color: var(--ink);
+            font-style: italic;
+        }
+        
+        .content ul, .content ol {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .content li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .contribute-card {
+            background: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+        
+        .contribute-card h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--sepia);
+        }
+        
+        .contribute-card p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            text-align: left;
+        }
+        
+        .contribute-card p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .contribute-card ul {
+            margin: 1rem 0;
+            padding-left: 1.25rem;
+            font-size: 0.95rem;
+        }
+        
+        .contribute-card li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight-box {
+            background: var(--paper);
+            border-left: 3px solid var(--gold);
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .highlight-box h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: 0.75rem;
+        }
+        
+        .highlight-box p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            text-align: left;
+        }
+        
+        code {
+            font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+            font-size: 0.85em;
+            background: var(--paper);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+        }
+        
+        footer {
+            background: var(--ink);
+            color: var(--cream);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        footer::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin-bottom: 3rem;
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-nav a {
+            color: var(--cream);
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+        
+        .footer-nav a:hover {
+            opacity: 1;
+            color: var(--gold);
+        }
+        
+        .footer-note {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            opacity: 0.3;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .nav { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html" class="nav-home">Home</a>
+        <span class="nav-title">Churches of the A1</span>
+    </nav>
+    
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Contribute</h1>
+            <p class="hero-description">Help us document the sacred heritage of Britain's Great North Road</p>
+        </div>
+        
+        <div class="divider">
+            <span class="divider-line"></span>
+            <span class="divider-icon">✟</span>
+            <span class="divider-line"></span>
+        </div>
+    </header>
+    
+    <section class="content">
+        <div class="container">
+            <p>This project is a living archive, growing as we travel the road and discover new churches worth documenting. We welcome contributions from anyone with knowledge of churches along the A1 corridor — local historians, church wardens, architectural enthusiasts, or travellers who have discovered something remarkable.</p>
+            
+            <h2>Ways to Contribute</h2>
+            
+            <div class="contribute-card">
+                <h3>📝 Content & Corrections</h3>
+                <p>Do you know a church that should be included? Have you spotted an error in our descriptions? We'd love to hear from you.</p>
+                <ul>
+                    <li>Suggest new churches for inclusion</li>
+                    <li>Correct historical errors or update visitor information</li>
+                    <li>Provide additional historical details or anecdotes</li>
+                    <li>Share primary sources or research</li>
+                </ul>
+            </div>
+            
+            <div class="contribute-card">
+                <h3>📷 Photography</h3>
+                <p>High-quality photographs are always welcome. We use images licensed under Creative Commons (CC BY-SA or more permissive).</p>
+                <ul>
+                    <li>Exterior views showing architectural features</li>
+                    <li>Interior photographs of significant features (screens, fonts, monuments)</li>
+                    <li>Historical context (views from the road, surrounding landscape)</li>
+                    <li>Seasonal variations (winter light, summer gardens)</li>
+                </ul>
+                <p>The easiest way to contribute photographs is to upload them to <a href="https://commons.wikimedia.org">Wikimedia Commons</a> with a Creative Commons license.</p>
+            </div>
+            
+            <div class="contribute-card">
+                <h3>💻 Code & Design</h3>
+                <p>This project is open source. If you're a developer or designer, you can contribute directly:</p>
+                <ul>
+                    <li>Bug fixes and improvements</li>
+                    <li>New features (maps, search, etc.)</li>
+                    <li>Accessibility improvements</li>
+                    <li>Performance optimization</li>
+                </ul>
+                <p>The source code is available on GitHub. Pull requests are welcome.</p>
+            </div>
+            
+            <h2>What We're Looking For</h2>
+            
+            <p>Not every church near the A1 belongs in this collection. We prioritize:</p>
+            
+            <ol>
+                <li><strong>Historical significance</strong> — Churches with unusual history, famous connections, or important architectural features</li>
+                <li><strong>Proximity to the route</strong> — Churches visible from the road, or within easy detour distance</li>
+                <li><strong>Accessibility</strong> — Churches that can actually be visited (at least externally)</li>
+                <li><strong>Story</strong> — Every church should have something interesting to say</li>
+            </ol>
+            
+            <div class="highlight-box">
+                <h4>A Note on Attribution</h4>
+                <p>All contributions will be credited appropriately. For text contributions, we typically acknowledge sources in the page footer or in an acknowledgements section. For photographs, we use the attribution specified by the photographer on Wikimedia Commons.</p>
+            </div>
+            
+            <h2>Standards & Style</h2>
+            
+            <p>If you're writing content for inclusion, please follow these guidelines:</p>
+            
+            <ul>
+                <li><strong>Accuracy</strong> — Cite sources for historical claims, especially dates and attributions</li>
+                <li><strong>Tone</strong> — Write for the interested general reader, not the academic specialist</li>
+                <li><strong>Length</strong> — Region pages feature 100–150 word summaries per church; individual church pages can be 500–1000 words</li>
+                <li><strong>Focus</strong> — Emphasize what makes each church distinctive and worth visiting</li>
+            </ul>
+            
+            <h2>Get in Touch</h2>
+            
+            <p>The best way to contribute is through GitHub, where you can open issues or submit pull requests. For general enquiries or suggestions, you can also reach us through the project repository.</p>
+            
+            <p>Thank you for helping to document this remarkable heritage. Every church has a story; together, we can tell them all.</p>
+        </div>
+    </section>
+    
+    <footer>
+        <nav class="footer-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+        </nav>
+        <p class="footer-note">Churches of the A1 — London to Edinburgh</p>
+    </footer>
+</body>
+</html>

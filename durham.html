@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>County Durham & Northumberland — Churches of the A1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --ink: #1a1814;
+            --ink-light: #3d3a35;
+            --cream: #f8f5ef;
+            --paper: #f0ebe0;
+            --gold: #b8941e;
+            --gold-dark: #8a6f16;
+            --sepia: #5c4a32;
+            --sepia-light: #8b7355;
+            --rust: #6b3d2e;
+            --text: #2d2a26;
+            --text-light: #5a554d;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: var(--cream);
+            color: var(--text);
+            font-size: 20px;
+            line-height: 1.8;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+        }
+        
+        a { color: var(--sepia); text-decoration: none; }
+        a:hover { text-decoration: underline; text-decoration-style: wavy; text-underline-offset: 3px; }
+        
+        .nav {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-home {
+            font-size: 0.85rem;
+            color: var(--sepia-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-home::before { content: '←'; }
+        
+        .nav-title {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .hero {
+            background: var(--paper);
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='0.015'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .hero-region {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            color: var(--ink);
+        }
+        
+        .hero-miles {
+            font-size: 1.1rem;
+            color: var(--sepia-light);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 0;
+        }
+        
+        .divider-line {
+            width: 60px;
+            height: 1px;
+            background: var(--sepia-light);
+            opacity: 0.3;
+        }
+        
+        .divider-icon {
+            color: var(--sepia-light);
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .intro {
+            padding: 3rem 0 2rem;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        
+        .intro p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            hyphens: auto;
+        }
+        
+        .intro p:first-of-type::first-letter {
+            font-size: 4.5rem;
+            float: left;
+            line-height: 0.8;
+            padding-right: 0.75rem;
+            padding-top: 0.25rem;
+            color: var(--sepia);
+            font-weight: 500;
+        }
+        
+        .churches {
+            padding: 2rem 0 4rem;
+        }
+        
+        .church-card {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        
+        .church-card:nth-child(even) {
+            grid-template-columns: 1fr 350px;
+        }
+        
+        .church-card:nth-child(even) .church-image {
+            order: 2;
+        }
+        
+        .church-card:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .church-image {
+            position: relative;
+        }
+        
+        .church-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+            filter: sepia(15%) contrast(1.05);
+        }
+        
+        .church-image::after {
+            content: '';
+            position: absolute;
+            top: 8px; left: 8px; right: -8px; bottom: -8px;
+            border: 1px solid rgba(0,0,0,0.1);
+            z-index: -1;
+        }
+        
+        .church-image figcaption {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-top: 1.25rem;
+            padding-right: 8px;
+            text-align: right;
+        }
+        
+        .church-content {
+            padding-top: 0.5rem;
+        }
+        
+        .church-mile {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .church-content h2 {
+            font-size: 1.75rem;
+            font-weight: 400;
+            margin-bottom: 0.25rem;
+            line-height: 1.2;
+        }
+        
+        .church-content h2 a {
+            color: inherit;
+        }
+        
+        .church-content h2 a:hover {
+            color: var(--sepia);
+        }
+        
+        .church-location {
+            font-size: 0.95rem;
+            color: var(--sepia-light);
+            font-style: italic;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        
+        .church-content p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.75;
+        }
+        
+        .church-facts {
+            margin-top: 1.5rem;
+            padding: 1rem 1.25rem;
+            background: white;
+            border-left: 3px solid var(--gold);
+        }
+        
+        .church-facts h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+        }
+        
+        .church-facts ul {
+            list-style: none;
+            font-size: 0.9rem;
+        }
+        
+        .church-facts li {
+            padding: 0.25rem 0;
+            border-bottom: 1px dotted rgba(0,0,0,0.1);
+        }
+        
+        .church-facts li:last-child {
+            border-bottom: none;
+        }
+        
+        .church-facts li strong {
+            color: var(--sepia);
+        }
+        
+        .read-more {
+            display: inline-block;
+            margin-top: 1rem;
+            font-style: italic;
+            color: var(--sepia);
+        }
+        
+        .region-map {
+            background: white;
+            padding: 2rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+        
+        .region-map h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .region-map svg {
+            width: 100%;
+            max-width: 400px;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        footer {
+            background: var(--ink);
+            color: var(--cream);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        footer::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin-bottom: 3rem;
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-nav a {
+            color: var(--cream);
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+        
+        .footer-nav a:hover {
+            opacity: 1;
+            color: var(--gold);
+        }
+        
+        .footer-note {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            opacity: 0.3;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        .credits {
+            padding: 2rem;
+            background: var(--paper);
+            font-size: 0.8rem;
+            color: var(--text-light);
+            border-top: 1px solid rgba(0,0,0,0.08);
+        }
+        
+        .credits h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+        
+        .credits p {
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 900px) {
+            .church-card,
+            .church-card:nth-child(even) {
+                grid-template-columns: 1fr;
+            }
+            
+            .church-card:nth-child(even) .church-image {
+                order: 0;
+            }
+            
+            .church-image img {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .nav { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html" class="nav-home">All Regions</a>
+        <span class="nav-title">Churches of the A1</span>
+    </nav>
+    
+    <header class="hero">
+        <div class="hero-content">
+            <p class="hero-region">Region V</p>
+            <h1>County Durham & Northumberland</h1>
+            <p class="hero-miles">Miles 250–330</p>
+            <p class="hero-description">The land of saints — Cuthbert, Bede, and Aidan — where Christianity came to the Anglo-Saxons and some of Europe's finest Romanesque architecture arose</p>
+        </div>
+        
+        <div class="divider">
+            <span class="divider-line"></span>
+            <span class="divider-icon">✟</span>
+            <span class="divider-line"></span>
+        </div>
+    </header>
+    
+    <section class="intro">
+        <div class="container">
+            <p>This is holy ground. On the tidal island of Lindisfarne, Aidan established his monastery in 635 AD, beginning the conversion of the Anglo-Saxons. Cuthbert, the "Wonder Worker of Britain," became the most venerated saint in medieval England; his shrine at Durham drew pilgrims for centuries. Bede, the "Father of English History," wrote his great works at Jarrow.</p>
+            <p>The churches here are monuments to this extraordinary spiritual heritage. Durham Cathedral — perhaps the finest Romanesque building in Europe — rises from its peninsula above the Wear, built to house Cuthbert's relics. Hexham preserves a 7th-century crypt; Lindisfarne preserves the ruins of the priory where English Christianity began.</p>
+        </div>
+    </section>
+    
+    <section class="churches">
+        <div class="container">
+            
+            <!-- Durham Cathedral -->
+            <article class="church-card">
+                <figure class="church-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Durham_Kathedrale_Nahaufnahme.jpg/1280px-Durham_Kathedrale_Nahaufnahme.jpg" 
+                         alt="Durham Cathedral from the south, showing its Norman towers">
+                    <figcaption>Photo: Oliver-Bonjoch / CC BY-SA</figcaption>
+                </figure>
+                <div class="church-content">
+                    <p class="church-mile">Mile 260</p>
+                    <h2><a href="churches/durham-cathedral.html">Durham Cathedral</a></h2>
+                    <p class="church-location">Durham, County Durham</p>
+                    <p>Rising from a wooded peninsula above the River Wear, Durham Cathedral is perhaps the finest Romanesque building in Europe. Built to house the relics of St Cuthbert, it has been a place of pilgrimage for nearly a thousand years. A UNESCO World Heritage Site since 1986.</p>
+                    <p>The ribbed vaulting of the nave, completed around 1130, pioneered techniques that would define Gothic architecture. The cathedral also houses the tomb of the Venerable Bede, Father of English History.</p>
+                    <div class="church-facts">
+                        <h4>Notable Facts</h4>
+                        <ul>
+                            <li><strong>Founded:</strong> 1093</li>
+                            <li><strong>Completed:</strong> 1133</li>
+                            <li><strong>Shrine:</strong> St Cuthbert (d. 687)</li>
+                            <li><strong>Status:</strong> UNESCO World Heritage Site</li>
+                        </ul>
+                    </div>
+                    <a href="churches/durham-cathedral.html" class="read-more">Read the full history →</a>
+                </div>
+            </article>
+            
+            <!-- Hexham Abbey -->
+            <article class="church-card">
+                <figure class="church-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Hexham_Abbey_from_Sele_Park_-_geograph.org.uk_-_1273825.jpg/1280px-Hexham_Abbey_from_Sele_Park_-_geograph.org.uk_-_1273825.jpg" 
+                         alt="Hexham Abbey from Sele Park">
+                    <figcaption>Photo: Mike Quinn / CC BY-SA</figcaption>
+                </figure>
+                <div class="church-content">
+                    <p class="church-mile">Mile 285</p>
+                    <h2>Hexham Abbey</h2>
+                    <p class="church-location">Hexham, Northumberland</p>
+                    <p>The crypt beneath Hexham Abbey was built in 674 AD by St Wilfrid, using stones from the nearby Roman fort of Corbridge. It is one of the oldest intact structures in England — a chamber that has witnessed continuous Christian worship for 1,350 years.</p>
+                    <p>The present church is largely Early English Gothic (13th century), but fragments of the Saxon monastery survive, including the famous Frith Stool — a stone chair that served as the bishop's throne and a seat of sanctuary.</p>
+                    <div class="church-facts">
+                        <h4>Notable Facts</h4>
+                        <ul>
+                            <li><strong>Crypt:</strong> 674 AD (St Wilfrid)</li>
+                            <li><strong>Current building:</strong> 12th–13th century</li>
+                            <li><strong>Frith Stool:</strong> 7th-century sanctuary chair</li>
+                            <li><strong>Roman stones:</strong> From Corbridge fort</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Lindisfarne Priory -->
+            <article class="church-card">
+                <figure class="church-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Lindisfarne_Priory_and_St_Mary%27s_-_geograph.org.uk_-_908179.jpg/1280px-Lindisfarne_Priory_and_St_Mary%27s_-_geograph.org.uk_-_908179.jpg" 
+                         alt="Lindisfarne Priory ruins with St Mary's Church">
+                    <figcaption>Photo: Christine Matthews / CC BY-SA</figcaption>
+                </figure>
+                <div class="church-content">
+                    <p class="church-mile">Mile 320 (east)</p>
+                    <h2>Lindisfarne Priory & St Mary's</h2>
+                    <p class="church-location">Holy Island, Northumberland</p>
+                    <p>On this tidal island, accessible only at low tide, Aidan of Iona founded a monastery in 635 AD that would become the spiritual center of Anglo-Saxon Christianity. The Lindisfarne Gospels were created here; Cuthbert was bishop here before his hermitage on Inner Farne.</p>
+                    <p>The priory ruins date from the Norman period, but beside them stands St Mary the Virgin, the parish church, still serving islanders. The rainbow arch of the ruined priory stands as one of the most evocative images in English Christianity.</p>
+                    <div class="church-facts">
+                        <h4>Notable Facts</h4>
+                        <ul>
+                            <li><strong>Founded:</strong> 635 AD (Aidan)</li>
+                            <li><strong>Lindisfarne Gospels:</strong> Created c. 715</li>
+                            <li><strong>Viking raid:</strong> 793 AD (first on Britain)</li>
+                            <li><strong>Access:</strong> Tidal causeway only</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- St Andrew's, Corbridge -->
+            <article class="church-card">
+                <figure class="church-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Corbridge_-_St_Andrew%27s_Church_-_geograph.org.uk_-_1104138.jpg/1024px-Corbridge_-_St_Andrew%27s_Church_-_geograph.org.uk_-_1104138.jpg" 
+                         alt="St Andrew's Church Corbridge">
+                    <figcaption>Photo: Mike Quinn / CC BY-SA</figcaption>
+                </figure>
+                <div class="church-content">
+                    <p class="church-mile">Mile 280</p>
+                    <h2>St Andrew's, Corbridge</h2>
+                    <p class="church-location">Corbridge, Northumberland</p>
+                    <p>Built largely from stones recycled from the nearby Roman town of Corstopitum, St Andrew's contains one of the most complete Saxon towers in England. The lower stages date from around 800 AD — making this one of the oldest continuously functioning churches in Britain.</p>
+                    <p>The Roman gateway arch, incorporated into the church tower, may be the most substantial piece of Roman architecture still in ecclesiastical use anywhere in Britain.</p>
+                    <div class="church-facts">
+                        <h4>Notable Facts</h4>
+                        <ul>
+                            <li><strong>Saxon tower:</strong> c. 800 AD</li>
+                            <li><strong>Roman arch:</strong> Reused from Corstopitum</li>
+                            <li><strong>Pele tower:</strong> 14th-century fortified vicar's house</li>
+                            <li><strong>Continuity:</strong> Worship since 8th century</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+            
+        </div>
+    </section>
+    
+    <!-- Regional Map -->
+    <div class="region-map">
+        <h3>The Route Through the Land of Saints</h3>
+        <svg viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#2d2a26" fill="none">
+                <!-- A1 Route line -->
+                <path d="M150 380 Q145 340 150 300 Q155 260 150 220 Q145 180 150 140 Q155 100 150 60 Q145 40 150 20" 
+                      stroke-width="2" stroke-dasharray="6,3" opacity="0.5"/>
+                
+                <!-- Churches -->
+                <g stroke-width="0.8">
+                    <!-- Durham -->
+                    <circle cx="150" cy="320" r="6" fill="#2d2a26"/>
+                    <path d="M150 312 L150 307 M147 309 L153 309"/>
+                    <text x="165" y="322" font-family="Cormorant Garamond" font-size="12" fill="#2d2a26" font-weight="500">Durham</text>
+                    <text x="165" y="335" font-family="Inter" font-size="8" fill="#5a554d">Mile 260</text>
+                    
+                    <!-- Corbridge -->
+                    <circle cx="130" cy="240" r="4" fill="#b8941e"/>
+                    <text x="55" y="242" font-family="Cormorant Garamond" font-size="10" fill="#2d2a26">Corbridge</text>
+                    <text x="55" y="255" font-family="Inter" font-size="8" fill="#5a554d">Mile 280</text>
+                    
+                    <!-- Hexham -->
+                    <circle cx="120" cy="200" r="4" fill="#b8941e"/>
+                    <text x="55" y="195" font-family="Cormorant Garamond" font-size="10" fill="#2d2a26">Hexham</text>
+                    <text x="55" y="208" font-family="Inter" font-size="8" fill="#5a554d">Mile 285</text>
+                    
+                    <!-- Lindisfarne (off to the east) -->
+                    <circle cx="230" cy="100" r="5" fill="#2d2a26"/>
+                    <path d="M230 92 L230 87 M227 89 L233 89"/>
+                    <path d="M155 120 Q190 110 225 100" stroke-dasharray="3,2" opacity="0.4"/>
+                    <text x="200" y="70" font-family="Cormorant Garamond" font-size="11" fill="#2d2a26" font-weight="500">Lindisfarne</text>
+                    <text x="200" y="83" font-family="Inter" font-size="8" fill="#5a554d">Holy Island</text>
+                </g>
+                
+                <!-- Direction markers -->
+                <text x="150" y="395" font-family="Inter" font-size="8" fill="#5a554d" text-anchor="middle">← York</text>
+                <text x="150" y="12" font-family="Inter" font-size="8" fill="#5a554d" text-anchor="middle">Scotland →</text>
+                
+                <!-- Compass -->
+                <g transform="translate(40, 60)" stroke-width="0.5" opacity="0.4">
+                    <circle cx="0" cy="0" r="12"/>
+                    <path d="M0 -15 L0 15 M-15 0 L15 0"/>
+                    <path d="M0 -12 L2 -4 L0 -6 L-2 -4 Z" fill="#2d2a26"/>
+                    <text x="-2" y="-18" font-family="Inter" font-size="6">N</text>
+                </g>
+            </g>
+        </svg>
+    </div>
+    
+    <div class="credits">
+        <div class="container">
+            <h4>Image Credits</h4>
+            <p>Durham Cathedral: Oliver-Bonjoch, CC BY-SA 3.0. Hexham Abbey: Mike Quinn / Geograph, CC BY-SA 2.0. Lindisfarne Priory: Christine Matthews / Geograph, CC BY-SA 2.0. St Andrew's Corbridge: Mike Quinn / Geograph, CC BY-SA 2.0. All images via Wikimedia Commons.</p>
+        </div>
+    </div>
+    
+    <footer>
+        <nav class="footer-nav">
+            <a href="yorkshire.html">← Region IV: Yorkshire</a>
+            <a href="index.html">All Regions</a>
+            <a href="borders.html">Region VI: Scotland →</a>
+        </nav>
+        <p class="footer-note">Churches of the A1 — London to Edinburgh</p>
+    </footer>
+</body>
+</html>

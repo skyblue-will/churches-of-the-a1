@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>London & Hertfordshire — Churches of the A1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --ink: #1a1814;
+            --ink-light: #3d3a35;
+            --cream: #f8f5ef;
+            --paper: #f0ebe0;
+            --gold: #b8941e;
+            --gold-dark: #8a6f16;
+            --sepia: #5c4a32;
+            --sepia-light: #8b7355;
+            --rust: #6b3d2e;
+            --text: #2d2a26;
+            --text-light: #5a554d;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: var(--cream);
+            color: var(--text);
+            font-size: 20px;
+            line-height: 1.8;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+        }
+        
+        a { color: var(--sepia); text-decoration: none; }
+        a:hover { text-decoration: underline; text-decoration-style: wavy; text-underline-offset: 3px; }
+        
+        .nav {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-home {
+            font-size: 0.85rem;
+            color: var(--sepia-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-home::before { content: '←'; }
+        
+        .nav-title {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .hero {
+            background: var(--paper);
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='0.015'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .hero-region {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            color: var(--ink);
+        }
+        
+        .hero-miles {
+            font-size: 1.1rem;
+            color: var(--sepia-light);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 0;
+        }
+        
+        .divider-line {
+            width: 60px;
+            height: 1px;
+            background: var(--sepia-light);
+            opacity: 0.3;
+        }
+        
+        .divider-icon {
+            color: var(--sepia-light);
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .intro {
+            padding: 3rem 0 2rem;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        
+        .intro p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            hyphens: auto;
+        }
+        
+        .intro p:first-of-type::first-letter {
+            font-size: 4.5rem;
+            float: left;
+            line-height: 0.8;
+            padding-right: 0.75rem;
+            padding-top: 0.25rem;
+            color: var(--sepia);
+            font-weight: 500;
+        }
+        
+        .churches {
+            padding: 2rem 0 4rem;
+        }
+        
+        .church-card {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        
+        .church-card:nth-child(even) {
+            grid-template-columns: 1fr 350px;
+        }
+        
+        .church-card:nth-child(even) .church-image {
+            order: 2;
+        }
+        
+        .church-card:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .church-image {
+            position: relative;
+        }
+        
+        .church-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+            filter: sepia(15%) contrast(1.05);
+        }
+        
+        .church-image::after {
+            content: '';
+            position: absolute;
+            top: 8px; left: 8px; right: -8px; bottom: -8px;
+            border: 1px solid rgba(0,0,0,0.1);
+            z-index: -1;
+        }
+        
+        .church-image figcaption {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-top: 1.25rem;
+            padding-right: 8px;
+            text-align: right;
+        }
+        
+        .church-content {
+            padding-top: 0.5rem;
+        }
+        
+        .church-mile {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .church-content h2 {
+            font-size: 1.75rem;
+            font-weight: 400;
+            margin-bottom: 0.25rem;
+            line-height: 1.2;
+        }
+        
+        .church-content h2 a {
+            color: inherit;
+        }
+        
+        .church-content h2 a:hover {
+            color: var(--sepia);
+        }
+        
+        .church-location {
+            font-size: 0.95rem;
+            color: var(--sepia-light);
+            font-style: italic;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        
+        .church-content p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.75;
+        }
+        
+        .church-facts {
+            margin-top: 1.5rem;
+            padding: 1rem 1.25rem;
+            background: white;
+            border-left: 3px solid var(--gold);
+        }
+        
+        .church-facts h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+        }
+        
+        .church-facts ul {
+            list-style: none;
+            font-size: 0.9rem;
+        }
+        
+        .church-facts li {
+            padding: 0.25rem 0;
+            border-bottom: 1px dotted rgba(0,0,0,0.1);
+        }
+        
+        .church-facts li:last-child {
+            border-bottom: none;
+        }
+        
+        .church-facts li strong {
+            color: var(--sepia);
+        }
+        
+        .read-more {
+            display: inline-block;
+            margin-top: 1rem;
+            font-style: italic;
+            color: var(--sepia);
+        }
+        
+        .region-map {
+            background: white;
+            padding: 2rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+        
+        .region-map h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .region-map svg {
+            width: 100%;
+            max-width: 400px;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        footer {
+            background: var(--ink);
+            color: var(--cream);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        footer::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin-bottom: 3rem;
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-nav a {
+            color: var(--cream);
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+        
+        .footer-nav a:hover {
+            opacity: 1;
+            color: var(--gold);
+        }
+        
+        .footer-note {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            opacity: 0.3;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        .credits {
+            padding: 2rem;
+            background: var(--paper);
+            font-size: 0.8rem;
+            color: var(--text-light);
+            border-top: 1px solid rgba(0,0,0,0.08);
+        }
+        
+        .credits h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+        
+        .credits p {
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 900px) {
+            .church-card,
+            .church-card:nth-child(even) {
+                grid-template-columns: 1fr;
+            }
+            
+            .church-card:nth-child(even) .church-image {
+                order: 0;
+            }
+            
+            .church-image img {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .nav { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html" class="nav-home">All Regions</a>
+        <span class="nav-title">Churches of the A1</span>
+    </nav>
+    
+    <header class="hero">
+        <div class="hero-content">
+            <p class="hero-region">Region I</p>
+            <h1>London & Hertfordshire</h1>
+            <p class="hero-miles">Miles 0–25</p>
+            <p class="hero-description">From the City's ancient stones to the great houses of the north — where the journey begins</p>
+        </div>
+        
+        <div class="divider">
+            <span class="divider-line"></span>
+            <span class="divider-icon">✟</span>
+            <span class="divider-line"></span>
+        </div>
+    </header>
+    
+    <section class="intro">
+        <div class="container">
+            <p>The Great North Road begins in the shadow of the Tower of London, where All Hallows has stood since Saxon times. From this ancient church — the oldest in the City — the road winds through Islington and Highgate, climbs the Northern Heights, and descends into the gentler landscape of Hertfordshire.</p>
+            <p>This first stretch passes churches that predate the Norman Conquest, survived the Great Fire, and witnessed the passage of every traveller heading north: kings and merchants, pilgrims and armies, mail coaches and cattle drovers. These are the churches of departure, the last glimpse of the capital before the long road ahead.</p>
+        </div>
+    </section>
+    
+    <section class="churches">
+        <div class="container">
+            
+            <!-- All Hallows by the Tower -->
+            <article class="church-card">
+                <figure class="church-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/All_Hallows-by-the-Tower_Church_2%2C_London%2C_UK_-_Diliff.jpg/1280px-All_Hallows-by-the-Tower_Church_2%2C_London%2C_UK_-_Diliff.jpg" 
+                         alt="All Hallows by the Tower, viewed from the south showing the brick tower">
+                    <figcaption>Photo: David Iliff / CC BY-SA</figcaption>
+                </figure>
+                <div class="church-content">
+                    <p class="church-mile">Mile 0</p>
+                    <h2><a href="churches/all-hallows-tower.html">All Hallows by the Tower</a></h2>
+                    <p class="church-location">Tower Hill, City of London</p>
+                    <p>The oldest church in the City of London, founded in 675 AD — three centuries before the Tower itself. A Saxon arch still stands in the nave, predating the Norman Conquest by four hundred years. Samuel Pepys watched the Great Fire from its tower; William Penn was baptised at its font.</p>
+                    <p>This is Mile Zero of our journey: the starting point of the Great North Road, where travellers have departed for Edinburgh since Roman times.</p>
+                    <div class="church-facts">
+                        <h4>Notable Facts</h4>
+                        <ul>
+                            <li><strong>Founded:</strong> 675 AD</li>
+                            <li><strong>Saxon arch:</strong> Oldest in the City</li>
+                            <li><strong>Notable baptism:</strong> William Penn (1644)</li>
+                            <li><strong>Crypt:</strong> Roman pavement survives</li>
+                        </ul>
+                    </div>
+                    <a href="churches/all-hallows-tower.html" class="read-more">Read the full history →</a>
+                </div>
+            </article>
+            
+            <!-- St Bartholomew-the-Great -->
+            <article class="church-card">
+                <figure class="church-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/St_Bartholomew-the-Great_1.jpg/1280px-St_Bartholomew-the-Great_1.jpg" 
+                         alt="Interior of St Bartholomew-the-Great showing Norman arches">
+                    <figcaption>Photo: Steve Cadman / CC BY-SA</figcaption>
+                </figure>
+                <div class="church-content">
+                    <p class="church-mile">Mile 1</p>
+                    <h2>St Bartholomew-the-Great</h2>
+                    <p class="church-location">Smithfield, City of London</p>
+                    <p>London's oldest parish church, founded as an Augustinian priory in 1123 by Rahere, a courtier of Henry I who survived malaria on a pilgrimage to Rome. The massive Norman pillars of the chancel survive intact — the most substantial Romanesque interior in London.</p>
+                    <p>William Hogarth was baptised here in 1697. Benjamin Franklin worked at a printing press in the Lady Chapel. The church has appeared in countless films, from Four Weddings and a Funeral to Shakespeare in Love.</p>
+                    <div class="church-facts">
+                        <h4>Notable Facts</h4>
+                        <ul>
+                            <li><strong>Founded:</strong> 1123</li>
+                            <li><strong>Founder:</strong> Rahere (tomb survives)</li>
+                            <li><strong>Style:</strong> Norman Romanesque</li>
+                            <li><strong>Film location:</strong> 50+ productions</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- St Etheldreda's -->
+            <article class="church-card">
+                <figure class="church-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/St_Etheldreda%27s_Church%2C_London.jpg/800px-St_Etheldreda%27s_Church%2C_London.jpg" 
+                         alt="St Etheldreda's Church exterior showing Gothic architecture">
+                    <figcaption>Photo: Amanda Slater / CC BY-SA</figcaption>
+                </figure>
+                <div class="church-content">
+                    <p class="church-mile">Mile 1</p>
+                    <h2>St Etheldreda's, Ely Place</h2>
+                    <p class="church-location">Holborn, City of London</p>
+                    <p>One of only two surviving buildings in London from the reign of Edward I. Built around 1290 as the private chapel of the Bishops of Ely, its windows hold the largest expanse of medieval stained glass in London. The church is the oldest Catholic church in England, returned to Rome in 1874.</p>
+                    <p>Named for the Anglo-Saxon princess who founded Ely Cathedral, St Etheldreda's sits in Ely Place — technically still not part of London, but a private liberty of Cambridgeshire until 1931.</p>
+                    <div class="church-facts">
+                        <h4>Notable Facts</h4>
+                        <ul>
+                            <li><strong>Built:</strong> c. 1290</li>
+                            <li><strong>Style:</strong> Decorated Gothic</li>
+                            <li><strong>Windows:</strong> Largest medieval glass in London</li>
+                            <li><strong>Status:</strong> Oldest Catholic church in England</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- St Mary, Hatfield -->
+            <article class="church-card">
+                <figure class="church-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/St_Etheldreda%27s_Church%2C_Hatfield.jpg/1280px-St_Etheldreda%27s_Church%2C_Hatfield.jpg" 
+                         alt="St Etheldreda's Church Hatfield with its prominent tower">
+                    <figcaption>Photo: John Salmon / CC BY-SA</figcaption>
+                </figure>
+                <div class="church-content">
+                    <p class="church-mile">Mile 20</p>
+                    <h2>St Etheldreda's, Hatfield</h2>
+                    <p class="church-location">Hatfield, Hertfordshire</p>
+                    <p>Standing in the grounds of Hatfield House, this church has witnessed some of the most dramatic moments in English history. In 1558, Princess Elizabeth was sitting under an oak tree in the park when messengers arrived to tell her she was Queen. The Salisbury Chapel contains monuments to three centuries of the Cecil family.</p>
+                    <p>The church dates from the 13th century, though much was rebuilt in Victorian times. The Brocket family pew, with its own fireplace, speaks to the comforts expected by the local gentry.</p>
+                    <div class="church-facts">
+                        <h4>Notable Facts</h4>
+                        <ul>
+                            <li><strong>Founded:</strong> 13th century</li>
+                            <li><strong>Salisbury Chapel:</strong> Cecil family tombs</li>
+                            <li><strong>Historic event:</strong> Elizabeth I learned she was Queen nearby</li>
+                            <li><strong>Location:</strong> Hatfield House grounds</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+            
+        </div>
+    </section>
+    
+    <!-- Regional Map -->
+    <div class="region-map">
+        <h3>The Route Through London & Hertfordshire</h3>
+        <svg viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#2d2a26" fill="none">
+                <!-- A1 Route line -->
+                <path d="M150 380 Q145 340 150 300 Q155 260 150 220 Q145 180 150 140 Q155 100 150 60 Q145 40 150 20" 
+                      stroke-width="2" stroke-dasharray="6,3" opacity="0.5"/>
+                
+                <!-- Region boundary suggestion -->
+                <path d="M50 350 Q80 300 70 250 Q60 200 80 150 Q100 100 80 50" stroke-width="0.5" opacity="0.2"/>
+                <path d="M250 350 Q220 300 230 250 Q240 200 220 150 Q200 100 220 50" stroke-width="0.5" opacity="0.2"/>
+                
+                <!-- Churches -->
+                <g stroke-width="0.8">
+                    <!-- All Hallows -->
+                    <circle cx="150" cy="360" r="6" fill="#2d2a26"/>
+                    <path d="M150 352 L150 347 M147 349 L153 349"/>
+                    <text x="165" y="362" font-family="Cormorant Garamond" font-size="11" fill="#2d2a26" font-weight="500">All Hallows</text>
+                    <text x="165" y="375" font-family="Inter" font-size="8" fill="#5a554d">Mile 0</text>
+                    
+                    <!-- St Bartholomew -->
+                    <circle cx="148" cy="320" r="4" fill="#b8941e"/>
+                    <text x="163" y="322" font-family="Cormorant Garamond" font-size="10" fill="#2d2a26">St Bartholomew</text>
+                    <text x="163" y="335" font-family="Inter" font-size="8" fill="#5a554d">Mile 1</text>
+                    
+                    <!-- St Etheldreda's London -->
+                    <circle cx="152" cy="280" r="4" fill="#b8941e"/>
+                    <text x="65" y="282" font-family="Cormorant Garamond" font-size="10" fill="#2d2a26">St Etheldreda's</text>
+                    <text x="65" y="295" font-family="Inter" font-size="8" fill="#5a554d">Mile 1</text>
+                    
+                    <!-- Hatfield -->
+                    <circle cx="150" cy="120" r="4" fill="#b8941e"/>
+                    <text x="165" y="122" font-family="Cormorant Garamond" font-size="10" fill="#2d2a26">Hatfield</text>
+                    <text x="165" y="135" font-family="Inter" font-size="8" fill="#5a554d">Mile 20</text>
+                </g>
+                
+                <!-- Direction markers -->
+                <text x="150" y="395" font-family="Inter" font-size="8" fill="#5a554d" text-anchor="middle">Tower of London</text>
+                <text x="150" y="12" font-family="Inter" font-size="8" fill="#5a554d" text-anchor="middle">Cambridgeshire →</text>
+                
+                <!-- Compass -->
+                <g transform="translate(40, 60)" stroke-width="0.5" opacity="0.4">
+                    <circle cx="0" cy="0" r="12"/>
+                    <path d="M0 -15 L0 15 M-15 0 L15 0"/>
+                    <path d="M0 -12 L2 -4 L0 -6 L-2 -4 Z" fill="#2d2a26"/>
+                    <text x="-2" y="-18" font-family="Inter" font-size="6">N</text>
+                </g>
+            </g>
+        </svg>
+    </div>
+    
+    <div class="credits">
+        <div class="container">
+            <h4>Image Credits</h4>
+            <p>All Hallows by the Tower: David Iliff, CC BY-SA 3.0. St Bartholomew-the-Great: Steve Cadman, CC BY-SA 2.0. St Etheldreda's Holborn: Amanda Slater, CC BY-SA 2.0. St Etheldreda's Hatfield: John Salmon, CC BY-SA 2.0. All images via Wikimedia Commons.</p>
+        </div>
+    </div>
+    
+    <footer>
+        <nav class="footer-nav">
+            <a href="index.html">All Regions</a>
+            <a href="eastern.html">Region II: Cambridgeshire →</a>
+        </nav>
+        <p class="footer-note">Churches of the A1 — London to Edinburgh</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambridgeshire & Lincolnshire — Churches of the A1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --ink: #1a1814;
+            --ink-light: #3d3a35;
+            --cream: #f8f5ef;
+            --paper: #f0ebe0;
+            --gold: #b8941e;
+            --gold-dark: #8a6f16;
+            --sepia: #5c4a32;
+            --sepia-light: #8b7355;
+            --rust: #6b3d2e;
+            --text: #2d2a26;
+            --text-light: #5a554d;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: var(--cream);
+            color: var(--text);
+            font-size: 20px;
+            line-height: 1.8;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+        }
+        
+        a { color: var(--sepia); text-decoration: none; }
+        a:hover { text-decoration: underline; text-decoration-style: wavy; text-underline-offset: 3px; }
+        
+        .nav {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-home {
+            font-size: 0.85rem;
+            color: var(--sepia-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-home::before { content: '←'; }
+        
+        .nav-title {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .hero {
+            background: var(--paper);
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='0.015'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .hero-region {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            color: var(--ink);
+        }
+        
+        .hero-miles {
+            font-size: 1.1rem;
+            color: var(--sepia-light);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 0;
+        }
+        
+        .divider-line {
+            width: 60px;
+            height: 1px;
+            background: var(--sepia-light);
+            opacity: 0.3;
+        }
+        
+        .divider-icon {
+            color: var(--sepia-light);
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .intro {
+            padding: 3rem 0 2rem;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        
+        .intro p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            hyphens: auto;
+        }
+        
+        .intro p:first-of-type::first-letter {
+            font-size: 4.5rem;
+            float: left;
+            line-height: 0.8;
+            padding-right: 0.75rem;
+            padding-top: 0.25rem;
+            color: var(--sepia);
+            font-weight: 500;
+        }
+        
+        .churches {
+            padding: 2rem 0 4rem;
+        }
+        
+        .church-card {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        
+        .church-card:nth-child(even) {
+            grid-template-columns: 1fr 350px;
+        }
+        
+        .church-card:nth-child(even) .church-image {
+            order: 2;
+        }
+        
+        .church-card:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .church-image {
+            position: relative;
+        }
+        
+        .church-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+            filter: sepia(15%) contrast(1.05);
+        }
+        
+        .church-image::after {
+            content: '';
+            position: absolute;
+            top: 8px; left: 8px; right: -8px; bottom: -8px;
+            border: 1px solid rgba(0,0,0,0.1);
+            z-index: -1;
+        }
+        
+        .church-image figcaption {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-top: 1.25rem;
+            padding-right: 8px;
+            text-align: right;
+        }
+        
+        .church-content {
+            padding-top: 0.5rem;
+        }
+        
+        .church-mile {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .church-content h2 {
+            font-size: 1.75rem;
+            font-weight: 400;
+            margin-bottom: 0.25rem;
+            line-height: 1.2;
+        }
+        
+        .church-content h2 a {
+            color: inherit;
+        }
+        
+        .church-content h2 a:hover {
+            color: var(--sepia);
+        }
+        
+        .church-location {
+            font-size: 0.95rem;
+            color: var(--sepia-light);
+            font-style: italic;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        
+        .church-content p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.75;
+        }
+        
+        .church-facts {
+            margin-top: 1.5rem;
+            padding: 1rem 1.25rem;
+            background: white;
+            border-left: 3px solid var(--gold);
+        }
+        
+        .church-facts h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+        }
+        
+        .church-facts ul {
+            list-style: none;
+            font-size: 0.9rem;
+        }
+        
+        .church-facts li {
+            padding: 0.25rem 0;
+            border-bottom: 1px dotted rgba(0,0,0,0.1);
+        }
+        
+        .church-facts li:last-child {
+            border-bottom: none;
+        }
+        
+        .church-facts li strong {
+            color: var(--sepia);
+        }
+        
+        .read-more {
+            display: inline-block;
+            margin-top: 1rem;
+            font-style: italic;
+            color: var(--sepia);
+        }
+        
+        .region-map {
+            background: white;
+            padding: 2rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+        
+        .region-map h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .region-map svg {
+            width: 100%;
+            max-width: 400px;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        footer {
+            background: var(--ink);
+            color: var(--cream);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        footer::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin-bottom: 3rem;
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-nav a {
+            color: var(--cream);
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+        
+        .footer-nav a:hover {
+            opacity: 1;
+            color: var(--gold);
+        }
+        
+        .footer-note {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            opacity: 0.3;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        .credits {
+            padding: 2rem;
+            background: var(--paper);
+            font-size: 0.8rem;
+            color: var(--text-light);
+            border-top: 1px solid rgba(0,0,0,0.08);
+        }
+        
+        .credits h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+        
+        .credits p {
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 900px) {
+            .church-card,
+            .church-card:nth-child(even) {
+                grid-template-columns: 1fr;
+            }
+            
+            .church-card:nth-child(even) .church-image {
+                order: 0;
+            }
+            
+            .church-image img {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .nav { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html" class="nav-home">All Regions</a>
+        <span class="nav-title">Churches of the A1</span>
+    </nav>
+    
+    <header class="hero">
+        <div class="hero-content">
+            <p class="hero-region">Region II</p>
+            <h1>Cambridgeshire & Lincolnshire</h1>
+            <p class="hero-miles">Miles 25–120</p>
+            <p class="hero-description">Flat lands, big skies, and some of England's finest wool churches — where medieval wealth built spires to rival cathedrals</p>
+        </div>
+        
+        <div class="divider">
+            <span class="divider-line"></span>
+            <span class="divider-icon">✟</span>
+            <span class="divider-line"></span>
+        </div>
+    </header>
+    
+    <section class="intro">
+        <div class="container">
+            <p>Lincolnshire was once one of the wealthiest counties in England. The flatlands that now seem empty were, in the medieval period, thick with sheep — and the wool they produced built churches that could rival any cathedral. Grantham, Stamford, Boston: these were prosperous market towns, and their merchants poured their fortunes into stone and glass.</p>
+            <p>The road through this region is the old Roman Ermine Street, arrow-straight across the fens. Churches here announce themselves from miles away, their spires rising like beacons above the flat agricultural landscape — landmarks for travellers, symbols of civic pride, and monuments to the wealth of wool.</p>
+        </div>
+    </section>
+    
+    <section class="churches">
+        <div class="container">
+            
+            <!-- Peterborough Cathedral -->
+            <article class="church-card">
+                <figure class="church-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Peterborough_Cathedral_exterior_-_geograph.org.uk_-_406319.jpg/1280px-Peterborough_Cathedral_exterior_-_geograph.org.uk_-_406319.jpg" 
+                         alt="Peterborough Cathedral's magnificent west front with its three great arches">
+                    <figcaption>Photo: Richard Croft / CC BY-SA</figcaption>
+                </figure>
+                <div class="church-content">
+                    <p class="church-mile">Mile 75</p>
+                    <h2>Peterborough Cathedral</h2>
+                    <p class="church-location">Peterborough, Cambridgeshire</p>
+                    <p>One of the most complete Norman cathedrals in England, Peterborough's west front is one of the most extraordinary facades in European architecture: three vast Gothic arches, 81 feet high, unique in Christendom. Behind them lies an almost perfectly preserved Norman interior.</p>
+                    <p>Catherine of Aragon was buried here in 1536, and Mary Queen of Scots was interred here for 25 years before her son James I moved her body to Westminster Abbey. The painted wooden ceiling of the nave, from around 1220, is the only one of its kind to survive.</p>
+                    <div class="church-facts">
+                        <h4>Notable Facts</h4>
+                        <ul>
+                            <li><strong>Founded:</strong> 654 AD (monastery)</li>
+                            <li><strong>Current building:</strong> 1118–1238</li>
+                            <li><strong>West front:</strong> Unique triple-arch design</li>
+                            <li><strong>Burials:</strong> Catherine of Aragon, Mary Queen of Scots (originally)</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Stamford -->
+            <article class="church-card">
+                <figure class="church-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/All_Saints_Church%2C_Stamford_-_geograph.org.uk_-_1472587.jpg/1024px-All_Saints_Church%2C_Stamford_-_geograph.org.uk_-_1472587.jpg" 
+                         alt="All Saints' Church Stamford with its elegant spire">
+                    <figcaption>Photo: Richard Croft / CC BY-SA</figcaption>
+                </figure>
+                <div class="church-content">
+                    <p class="church-mile">Mile 90</p>
+                    <h2>All Saints' Church</h2>
+                    <p class="church-location">Stamford, Lincolnshire</p>
+                    <p>Stamford, "the finest stone town in England," once had fourteen medieval churches. Five survive, and All Saints' is the most beautiful — a perfect Perpendicular church with a slender broach spire that has become the symbol of the town.</p>
+                    <p>The interior preserves medieval benches, a 15th-century brass lectern, and glass from the same period. The town's wool merchants worshipped here, their wealth visible in every carved angel and painted ceiling boss.</p>
+                    <div class="church-facts">
+                        <h4>Notable Facts</h4>
+                        <ul>
+                            <li><strong>Built:</strong> 13th–15th century</li>
+                            <li><strong>Style:</strong> Early English to Perpendicular</li>
+                            <li><strong>Spire:</strong> 152 feet, broach style</li>
+                            <li><strong>Medieval brass:</strong> Lectern c. 1480</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- St Wulfram's Grantham -->
+            <article class="church-card">
+                <figure class="church-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/St._Wulfram%27s_Church%2C_Grantham_%28geograph_3144727%29.jpg/800px-St._Wulfram%27s_Church%2C_Grantham_%28geograph_3144727%29.jpg" 
+                         alt="St Wulfram's Church Grantham with its magnificent 282-foot spire">
+                    <figcaption>Photo: Julian P Guffogg / CC BY-SA</figcaption>
+                </figure>
+                <div class="church-content">
+                    <p class="church-mile">Mile 110</p>
+                    <h2><a href="churches/st-wulframs-grantham.html">St Wulfram's, Grantham</a></h2>
+                    <p class="church-location">Grantham, Lincolnshire</p>
+                    <p>A cathedral in all but name, St Wulfram's has watched over the Great North Road for eight centuries. Its spire — at 282 feet, the sixth tallest in England — has guided travellers since the 14th century. The church's gargoyles are a gallery of medieval grotesques; its chained library dates from 1598.</p>
+                    <p>Isaac Newton worshipped here as a schoolboy. Margaret Thatcher was baptised here in 1925. The Angel and Royal Inn next door claims to be England's oldest, hosting King John in 1213.</p>
+                    <div class="church-facts">
+                        <h4>Notable Facts</h4>
+                        <ul>
+                            <li><strong>Founded:</strong> c. 1180</li>
+                            <li><strong>Spire:</strong> 282 feet (6th tallest in England)</li>
+                            <li><strong>Chained library:</strong> Founded 1598</li>
+                            <li><strong>Notable connections:</strong> Newton, Thatcher</li>
+                        </ul>
+                    </div>
+                    <a href="churches/st-wulframs-grantham.html" class="read-more">Read the full history →</a>
+                </div>
+            </article>
+            
+            <!-- St Botolph's Boston -->
+            <article class="church-card">
+                <figure class="church-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Boston_Stump_-_geograph.org.uk_-_594727.jpg/800px-Boston_Stump_-_geograph.org.uk_-_594727.jpg" 
+                         alt="St Botolph's Church Boston, the famous Boston Stump">
+                    <figcaption>Photo: Richard Croft / CC BY-SA</figcaption>
+                </figure>
+                <div class="church-content">
+                    <p class="church-mile">Mile 105 (east)</p>
+                    <h2>St Botolph's, Boston</h2>
+                    <p class="church-location">Boston, Lincolnshire</p>
+                    <p>The "Boston Stump" is England's tallest parish church tower — 272 feet of Lincolnshire limestone that can be seen from 20 miles away across the fens. A detour from the A1, but an unmissable one: this is perhaps the finest wool church in England.</p>
+                    <p>In 1607, a group of Separatists tried to flee to Holland from here, were arrested, and were imprisoned in the Guildhall. Thirteen years later, some of them sailed on the Mayflower. The church gave its name to Boston, Massachusetts.</p>
+                    <div class="church-facts">
+                        <h4>Notable Facts</h4>
+                        <ul>
+                            <li><strong>Tower:</strong> 272 feet (tallest parish church)</li>
+                            <li><strong>Built:</strong> 1309–1460</li>
+                            <li><strong>Connection:</strong> Pilgrim Fathers imprisoned here 1607</li>
+                            <li><strong>Named after:</strong> Boston, Massachusetts</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+            
+        </div>
+    </section>
+    
+    <!-- Regional Map -->
+    <div class="region-map">
+        <h3>The Route Through the Fens</h3>
+        <svg viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#2d2a26" fill="none">
+                <!-- A1 Route line -->
+                <path d="M150 380 Q145 340 150 300 Q155 260 150 220 Q145 180 150 140 Q155 100 150 60 Q145 40 150 20" 
+                      stroke-width="2" stroke-dasharray="6,3" opacity="0.5"/>
+                
+                <!-- Churches -->
+                <g stroke-width="0.8">
+                    <!-- Peterborough -->
+                    <circle cx="150" cy="320" r="5" fill="#2d2a26"/>
+                    <path d="M150 312 L150 307 M147 309 L153 309"/>
+                    <text x="165" y="322" font-family="Cormorant Garamond" font-size="11" fill="#2d2a26" font-weight="500">Peterborough</text>
+                    <text x="165" y="335" font-family="Inter" font-size="8" fill="#5a554d">Mile 75</text>
+                    
+                    <!-- Stamford -->
+                    <circle cx="148" cy="250" r="4" fill="#b8941e"/>
+                    <text x="163" y="252" font-family="Cormorant Garamond" font-size="10" fill="#2d2a26">Stamford</text>
+                    <text x="163" y="265" font-family="Inter" font-size="8" fill="#5a554d">Mile 90</text>
+                    
+                    <!-- Grantham -->
+                    <circle cx="150" cy="180" r="5" fill="#2d2a26"/>
+                    <path d="M150 172 L150 167 M147 169 L153 169"/>
+                    <text x="165" y="182" font-family="Cormorant Garamond" font-size="11" fill="#2d2a26" font-weight="500">Grantham</text>
+                    <text x="165" y="195" font-family="Inter" font-size="8" fill="#5a554d">Mile 110</text>
+                    
+                    <!-- Boston (off to the east) -->
+                    <circle cx="220" cy="280" r="4" fill="#b8941e"/>
+                    <path d="M155 290 Q180 285 215 280" stroke-dasharray="3,2" opacity="0.4"/>
+                    <text x="230" y="275" font-family="Cormorant Garamond" font-size="10" fill="#2d2a26">Boston</text>
+                    <text x="230" y="288" font-family="Inter" font-size="8" fill="#5a554d">Mile 105 (E)</text>
+                </g>
+                
+                <!-- Direction markers -->
+                <text x="150" y="395" font-family="Inter" font-size="8" fill="#5a554d" text-anchor="middle">← London</text>
+                <text x="150" y="12" font-family="Inter" font-size="8" fill="#5a554d" text-anchor="middle">Newark →</text>
+                
+                <!-- Compass -->
+                <g transform="translate(40, 60)" stroke-width="0.5" opacity="0.4">
+                    <circle cx="0" cy="0" r="12"/>
+                    <path d="M0 -15 L0 15 M-15 0 L15 0"/>
+                    <path d="M0 -12 L2 -4 L0 -6 L-2 -4 Z" fill="#2d2a26"/>
+                    <text x="-2" y="-18" font-family="Inter" font-size="6">N</text>
+                </g>
+            </g>
+        </svg>
+    </div>
+    
+    <div class="credits">
+        <div class="container">
+            <h4>Image Credits</h4>
+            <p>Peterborough Cathedral: Richard Croft / Geograph, CC BY-SA 2.0. All Saints' Stamford: Richard Croft / Geograph, CC BY-SA 2.0. St Wulfram's Grantham: Julian P Guffogg / Geograph, CC BY-SA 2.0. St Botolph's Boston: Richard Croft / Geograph, CC BY-SA 2.0. All images via Wikimedia Commons.</p>
+        </div>
+    </div>
+    
+    <footer>
+        <nav class="footer-nav">
+            <a href="london.html">← Region I: London</a>
+            <a href="index.html">All Regions</a>
+            <a href="midlands.html">Region III: Nottinghamshire →</a>
+        </nav>
+        <p class="footer-note">Churches of the A1 — London to Edinburgh</p>
+    </footer>
+</body>
+</html>

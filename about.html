@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Churches of the A1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --ink: #1a1814;
+            --ink-light: #3d3a35;
+            --cream: #f8f5ef;
+            --paper: #f0ebe0;
+            --gold: #b8941e;
+            --gold-dark: #8a6f16;
+            --sepia: #5c4a32;
+            --sepia-light: #8b7355;
+            --text: #2d2a26;
+            --text-light: #5a554d;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: var(--cream);
+            color: var(--text);
+            font-size: 20px;
+            line-height: 1.8;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+        }
+        
+        a { color: var(--sepia); text-decoration: none; }
+        a:hover { text-decoration: underline; text-decoration-style: wavy; text-underline-offset: 3px; }
+        
+        .nav {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-home {
+            font-size: 0.85rem;
+            color: var(--sepia-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-home::before { content: '←'; }
+        
+        .nav-title {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .hero {
+            background: var(--paper);
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='0.015'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--ink);
+        }
+        
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            max-width: 550px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 0;
+        }
+        
+        .divider-line {
+            width: 60px;
+            height: 1px;
+            background: var(--sepia-light);
+            opacity: 0.3;
+        }
+        
+        .divider-icon {
+            color: var(--sepia-light);
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .content {
+            padding: 3rem 0 4rem;
+        }
+        
+        .content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            hyphens: auto;
+        }
+        
+        .content p:first-of-type::first-letter {
+            font-size: 4.5rem;
+            float: left;
+            line-height: 0.8;
+            padding-right: 0.75rem;
+            padding-top: 0.25rem;
+            color: var(--sepia);
+            font-weight: 500;
+        }
+        
+        .content h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin: 3rem 0 1.5rem;
+            color: var(--ink);
+            font-style: italic;
+        }
+        
+        .content ul {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .content li {
+            margin-bottom: 0.75rem;
+        }
+        
+        blockquote {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--sepia);
+            border-left: 3px solid var(--gold);
+            padding-left: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        
+        blockquote cite {
+            display: block;
+            font-size: 0.9rem;
+            font-style: normal;
+            color: var(--text-light);
+            margin-top: 0.75rem;
+        }
+        
+        .info-box {
+            background: white;
+            padding: 2rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+        
+        .info-box h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .info-box p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        footer {
+            background: var(--ink);
+            color: var(--cream);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        footer::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin-bottom: 3rem;
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-nav a {
+            color: var(--cream);
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+        
+        .footer-nav a:hover {
+            opacity: 1;
+            color: var(--gold);
+        }
+        
+        .footer-note {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            opacity: 0.3;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .nav { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html" class="nav-home">Home</a>
+        <span class="nav-title">Churches of the A1</span>
+    </nav>
+    
+    <header class="hero">
+        <div class="hero-content">
+            <h1>About This Project</h1>
+            <p class="hero-description">A journey through sacred history along Britain's oldest road</p>
+        </div>
+        
+        <div class="divider">
+            <span class="divider-line"></span>
+            <span class="divider-icon">✟</span>
+            <span class="divider-line"></span>
+        </div>
+    </header>
+    
+    <section class="content">
+        <div class="container">
+            <p>The A1 — Britain's longest road — runs 410 miles from London to Edinburgh. It follows, more or less, the route of the Great North Road, which followed the Roman Ermine Street, which followed paths worn by feet before Rome was founded. For two thousand years, travellers have moved along this route, and for nearly as long, churches have marked their journey.</p>
+            
+            <p>This project documents those churches: not every chapel and meeting house, but the ones that matter — the cathedrals and abbeys, the wool churches and pilgrimage shrines, the ancient foundations that have shaped British Christianity from Saxon times to the present.</p>
+            
+            <h2>Why Churches?</h2>
+            
+            <p>Churches are the oldest surviving buildings in most English towns. Long after the manor houses have been rebuilt, the factories demolished, the coaching inns converted to other uses, the medieval church still stands. They are repositories of history — in their architecture, their monuments, their very stones — and they tell the story of the communities that built them.</p>
+            
+            <p>The churches along the A1 tell a particular story: of prosperity and decline, of Reformation and restoration, of wool merchants and pilgrims and saints. They mark the stages of a journey that has been made countless times over countless centuries.</p>
+            
+            <blockquote>
+                "Every old church in England is a history book, if you know how to read it."
+                <cite>— John Betjeman</cite>
+            </blockquote>
+            
+            <h2>How to Use This Guide</h2>
+            
+            <p>The site is organized by region, following the road from south to north:</p>
+            
+            <ul>
+                <li><strong>Region I:</strong> London & Hertfordshire (Miles 0–25)</li>
+                <li><strong>Region II:</strong> Cambridgeshire & Lincolnshire (Miles 25–120)</li>
+                <li><strong>Region III:</strong> Nottinghamshire & South Yorkshire (Miles 120–180)</li>
+                <li><strong>Region IV:</strong> North Yorkshire (Miles 180–250)</li>
+                <li><strong>Region V:</strong> County Durham & Northumberland (Miles 250–330)</li>
+                <li><strong>Region VI:</strong> Scottish Borders & Edinburgh (Miles 330–410)</li>
+            </ul>
+            
+            <p>Each region page provides an overview and highlights the most significant churches. Individual church pages offer deeper history, practical visitor information, and context for understanding what you're seeing.</p>
+            
+            <h2>Sources & Acknowledgements</h2>
+            
+            <p>This project draws on a long tradition of English church scholarship, particularly:</p>
+            
+            <ul>
+                <li>The <em>Buildings of England</em> series founded by Nikolaus Pevsner</li>
+                <li>Simon Jenkins's <em>England's Thousand Best Churches</em></li>
+                <li>The websites of the Churches Conservation Trust, English Heritage, and Historic Scotland</li>
+                <li>Individual church guides and local histories</li>
+            </ul>
+            
+            <p>All images are sourced from Wikimedia Commons and used under Creative Commons licenses. Individual credits appear on each page.</p>
+            
+            <div class="info-box">
+                <h3>A Living Project</h3>
+                <p>This collection grows as we travel the road. If you know of a church that should be included, or have corrections or additional information about churches already featured, please <a href="contribute.html">get in touch</a>.</p>
+                <p>The project is open source and welcomes contributions.</p>
+            </div>
+            
+            <h2>The Design</h2>
+            
+            <p>The aesthetic of this site draws inspiration from Victorian antiquarian guides — the kind of book a traveller might have carried while exploring churches a century ago. The cream paper texture, the Cormorant Garamond typeface, the sepia-toned images: all are meant to evoke the pleasure of old books about old buildings.</p>
+            
+            <p>But the content is new, and the format is designed for the modern traveller — whether you're planning a journey along the A1, researching churches for academic purposes, or simply exploring from your armchair.</p>
+        </div>
+    </section>
+    
+    <footer>
+        <nav class="footer-nav">
+            <a href="index.html">Home</a>
+            <a href="contribute.html">Contribute</a>
+        </nav>
+        <p class="footer-note">Churches of the A1 — London to Edinburgh</p>
+    </footer>
+</body>
+</html>
