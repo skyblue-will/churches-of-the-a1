@@ -40,12 +40,20 @@
         
         /* Hero */
         .hero {
-            background: var(--paper);
-            padding: 4rem 2rem 3rem;
+            background: linear-gradient(to bottom, rgba(29,26,22,0.7), rgba(29,26,22,0.85)), 
+                        url('https://upload.wikimedia.org/wikipedia/commons/6/66/Durham_Cathedral_and_Castle.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            padding: 5rem 2rem 4rem;
             text-align: center;
             position: relative;
             border-bottom: 1px solid rgba(0,0,0,0.1);
+            color: var(--cream);
         }
+        
+        .hero h1 { color: var(--cream); }
+        .hero h1 em { color: var(--gold); }
+        .hero-subtitle { color: rgba(248,245,239,0.85); }
         
         .hero::before {
             content: '';
@@ -60,12 +68,16 @@
             position: absolute;
             width: 120px;
             height: 120px;
-            opacity: 0.15;
+            opacity: 0.2;
+            color: var(--gold);
         }
         .corner-flourish.top-left { top: 20px; left: 20px; }
         .corner-flourish.top-right { top: 20px; right: 20px; transform: scaleX(-1); }
         .corner-flourish.bottom-left { bottom: 20px; left: 20px; transform: scaleY(-1); }
         .corner-flourish.bottom-right { bottom: 20px; right: 20px; transform: scale(-1); }
+        
+        /* Hide hero illustration when we have background image */
+        .hero-illustration { display: none; }
         
         .hero-content {
             position: relative;
@@ -114,14 +126,14 @@
         .divider-line {
             width: 60px;
             height: 1px;
-            background: var(--sepia-light);
-            opacity: 0.3;
+            background: var(--gold);
+            opacity: 0.5;
         }
         
         .divider-icon {
-            color: var(--sepia-light);
+            color: var(--gold);
             font-size: 1.2rem;
-            opacity: 0.5;
+            opacity: 0.7;
         }
         
         /* Container */
@@ -324,10 +336,20 @@
             z-index: -1;
         }
         
-        .featured-image svg {
+        .featured-image img {
             width: 100%;
-            height: auto;
+            height: 400px;
+            object-fit: cover;
             display: block;
+            filter: sepia(15%) contrast(1.05);
+        }
+        
+        .featured-image figcaption {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-top: 1rem;
+            text-align: right;
         }
         
         .featured-label {
@@ -747,78 +769,9 @@
     <section class="featured">
         <div class="featured-inner">
             <figure class="featured-image">
-                <!-- St Wulfram's pen & ink illustration -->
-                <svg viewBox="0 0 250 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g stroke="#2d2a26" stroke-width="0.7">
-                        <!-- Tall spire -->
-                        <path d="M125 5 L125 10"/>
-                        <path d="M122 8 L128 8"/>
-                        <path d="M125 10 L125 90"/>
-                        <path d="M105 90 L125 12 L145 90"/>
-                        <path d="M110 85 L125 20 L140 85" stroke-width="0.4"/>
-                        
-                        <!-- Spire windows/details -->
-                        <g stroke-width="0.4" opacity="0.5">
-                            <path d="M120 40 L120 50 L130 50 L130 40"/>
-                            <path d="M118 60 L118 72 L132 72 L132 60"/>
-                        </g>
-                        
-                        <!-- Tower top -->
-                        <path d="M95 90 L95 85 L105 85 L105 90"/>
-                        <path d="M145 90 L145 85 L155 85 L155 90"/>
-                        
-                        <!-- Tower body -->
-                        <path d="M90 90 L90 200 L160 200 L160 90 L90 90"/>
-                        
-                        <!-- Tower windows -->
-                        <g fill="#2d2a26" opacity="0.2">
-                            <path d="M100 100 L100 125 Q110 90 120 125 L120 100 Z"/>
-                            <path d="M130 100 L130 125 Q140 90 150 125 L150 100 Z"/>
-                            <path d="M105 140 L105 175 Q125 120 145 175 L145 140 Z"/>
-                        </g>
-                        <path d="M100 100 L100 125 Q110 90 120 125 L120 100"/>
-                        <path d="M130 100 L130 125 Q140 90 150 125 L150 100"/>
-                        <path d="M105 140 L105 175 Q125 120 145 175 L145 140"/>
-                        
-                        <!-- Nave -->
-                        <path d="M50 170 L50 280 L200 280 L200 170"/>
-                        <path d="M50 170 L125 140 L200 170"/>
-                        
-                        <!-- Nave windows -->
-                        <g fill="#2d2a26" opacity="0.2">
-                            <path d="M65 190 L65 240 Q85 180 105 240 L105 190 Z"/>
-                            <path d="M145 190 L145 240 Q165 180 185 240 L185 190 Z"/>
-                        </g>
-                        <path d="M65 190 L65 240 Q85 180 105 240 L105 190"/>
-                        <path d="M145 190 L145 240 Q165 180 185 240 L185 190"/>
-                        
-                        <!-- Door -->
-                        <path d="M110 280 L110 245 Q125 235 140 245 L140 280"/>
-                        
-                        <!-- Buttresses -->
-                        <path d="M45 280 L50 200 L50 280"/>
-                        <path d="M205 280 L200 200 L200 280"/>
-                        
-                        <!-- Ground -->
-                        <path d="M20 280 L230 280"/>
-                        
-                        <!-- Gravestones -->
-                        <path d="M25 280 L25 268 Q30 265 35 268 L35 280" stroke-width="0.5"/>
-                        <path d="M210 280 L210 270 L218 270 L218 280" stroke-width="0.5"/>
-                        
-                        <!-- Trees -->
-                        <g stroke-width="0.5" opacity="0.4">
-                            <path d="M15 280 Q20 260 15 245 Q25 230 18 215"/>
-                            <path d="M230 280 Q225 255 232 240 Q222 225 230 210"/>
-                        </g>
-                        
-                        <!-- Grass -->
-                        <g stroke-width="0.35" opacity="0.35">
-                            <path d="M40 280 Q42 276 45 280"/>
-                            <path d="M190 280 Q193 275 196 280"/>
-                        </g>
-                    </g>
-                </svg>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/St._Wilfrums_Church.jpg" 
+                     alt="St Wulfram's Church, Grantham - the 282-foot spire rising above the town">
+                <figcaption>Photo: Richard Croft / CC BY-SA</figcaption>
             </figure>
             
             <div>
