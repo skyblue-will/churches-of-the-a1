@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St Giles' Cathedral, Edinburgh — Churches of the A1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --stone: #2d2a26;
+            --stone-light: #3d3a35;
+            --parchment: #f5f0e8;
+            --gold: #c9a227;
+            --gold-light: #e8d9a0;
+            --ruby: #8b2942;
+            --thistle: #5c4b8a;
+            --text: #1a1a1a;
+            --text-light: #5a5a5a;
+        }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Newsreader', Georgia, serif;
+            background: var(--parchment);
+            color: var(--text);
+            font-size: 19px;
+            line-height: 1.75;
+        }
+        
+        a { color: var(--ruby); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        nav {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            background: white;
+        }
+        
+        nav a { color: var(--text-light); }
+        nav a:hover { color: var(--ruby); text-decoration: none; }
+        
+        .nav-title { color: var(--text); font-weight: 500; }
+        
+        .church-hero {
+            background: linear-gradient(180deg, var(--stone) 0%, var(--stone-light) 100%);
+            color: var(--parchment);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        
+        .church-hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .church-region {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .church-hero h1 {
+            font-size: 2.75rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+        
+        .church-location {
+            font-size: 1.2rem;
+            color: var(--gold-light);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        
+        .church-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .church-meta span {
+            color: var(--gold);
+        }
+        
+        .journey-badge {
+            display: inline-block;
+            background: var(--thistle);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.75rem;
+            border-radius: 3px;
+            margin-top: 1.5rem;
+        }
+        
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        article {
+            padding: 4rem 0;
+        }
+        
+        article p {
+            margin-bottom: 1.5rem;
+        }
+        
+        article h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 3rem 0 1.5rem;
+            font-style: italic;
+        }
+        
+        .lead {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            border-left: 3px solid var(--gold);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .info-box {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        
+        .info-box h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .info-item {
+            font-size: 0.9rem;
+        }
+        
+        .info-item label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        
+        blockquote {
+            font-size: 1.35rem;
+            font-style: italic;
+            color: var(--ruby);
+            border-left: 3px solid var(--ruby);
+            padding-left: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        
+        blockquote cite {
+            display: block;
+            font-size: 0.85rem;
+            font-style: normal;
+            color: var(--text-light);
+            margin-top: 0.75rem;
+        }
+        
+        .image-placeholder {
+            background: linear-gradient(135deg, var(--stone) 0%, var(--stone-light) 100%);
+            border-radius: 8px;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 3rem;
+            margin: 2rem 0;
+        }
+        
+        .image-caption {
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: -1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .thistle-box {
+            background: linear-gradient(135deg, #5c4b8a 0%, #7b6ba8 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            color: white;
+        }
+        
+        .thistle-box h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .thistle-box p {
+            margin: 0;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .journey-complete {
+            background: var(--gold);
+            color: var(--stone);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .journey-complete h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .journey-complete p {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        
+        .journey-complete .miles {
+            font-size: 3rem;
+            font-weight: 600;
+            display: block;
+            margin: 1rem 0;
+        }
+        
+        .church-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            margin-top: 3rem;
+        }
+        
+        .church-nav a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            max-width: 45%;
+        }
+        
+        .church-nav a:hover { color: var(--ruby); text-decoration: none; }
+        
+        .church-nav .label {
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+        
+        .church-nav .title {
+            font-family: 'Newsreader', serif;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+        
+        .church-nav a:hover .title { color: var(--ruby); }
+        .church-nav .next { text-align: right; }
+        
+        footer {
+            background: var(--stone);
+            color: var(--parchment);
+            padding: 2rem;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+        }
+        
+        footer a { color: var(--gold); }
+        
+        @media (max-width: 600px) {
+            .church-hero h1 { font-size: 2rem; }
+            .info-grid { grid-template-columns: 1fr; }
+            .church-meta { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html">← Churches of the A1</a>
+        <span class="nav-title">Edinburgh</span>
+        <a href="../index.html">All Chapters →</a>
+    </nav>
+    
+    <header class="church-hero">
+        <div class="church-hero-content">
+            <p class="church-region">Region VI — Edinburgh</p>
+            <h1>St Giles' Cathedral</h1>
+            <p class="church-location">Royal Mile, Edinburgh — Mile 410</p>
+            <div class="church-meta">
+                <div>Founded: <span>c. 1124</span></div>
+                <div>Style: <span>Scottish Gothic</span></div>
+                <div>Crown Spire: <span>161 feet</span></div>
+            </div>
+            <div class="journey-badge">Journey's End</div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <article>
+            <p class="lead">After 410 miles, the journey ends where it began: at a church. St Giles' — the High Kirk of Edinburgh — stands at the heart of the Royal Mile, its crown spire a symbol of Scotland itself. Here, John Knox sparked the Reformation; here, the Scottish Parliament is blessed; here, the story of Scottish Christianity finds its fullest expression.</p>
+            
+            <div class="image-placeholder">👑</div>
+            <p class="image-caption">The distinctive Crown Steeple of St Giles', added in 1495</p>
+            
+            <p>St Giles' is not, technically, a cathedral — Edinburgh's bishopric was abolished during the Reformation, and it has been a cathedral only briefly since. The Scots call it the High Kirk, the principal church of the Church of Scotland. But everyone calls it St Giles' Cathedral, and the name has stuck.</p>
+            
+            <p>The church is dedicated to St Giles, a 7th-century Greek hermit who became the patron saint of Edinburgh. According to legend, he was wounded by an arrow while protecting a deer — the injured deer and arrow appear on the city's coat of arms.</p>
+            
+            <h2>John Knox and the Reformation</h2>
+            
+            <p>On 29 June 1559, John Knox stood in this church and preached a sermon that would change Scotland forever. His fiery denunciation of Catholic "idolatry" helped spark the Scottish Reformation. Within a year, the Scottish Parliament had abolished papal authority and banned the celebration of Mass.</p>
+            
+            <p>Knox became minister of St Giles' and remained so until his death in 1572. His statue stands in the nave, severe and uncompromising. He is buried in the churchyard — under what is now a parking space, marked with a small plaque.</p>
+            
+            <blockquote>
+                "Give me Scotland, or I die!"
+                <cite>— John Knox</cite>
+            </blockquote>
+            
+            <p>The Reformation stripped St Giles' of its medieval furnishings and divided it into multiple preaching spaces. At one point, four separate congregations worshipped here simultaneously, separated by internal walls. The building was unified again in the 19th century, though the interior remains austere by English cathedral standards — a reflection of Scottish Presbyterian theology.</p>
+            
+            <h2>The Thistle Chapel</h2>
+            
+            <div class="thistle-box">
+                <h4>Order of the Thistle</h4>
+                <p>The Thistle Chapel, added in 1911, is the chapel of the Most Ancient and Most Noble Order of the Thistle — Scotland's highest order of chivalry. Knights and Ladies of the Thistle, appointed by the monarch, include 16 members plus the Sovereign. The chapel, though small, is extraordinarily ornate — a riot of heraldry, carved angels, and thistle motifs. Installation services are held here, with members processing in their distinctive dark green mantles.</p>
+            </div>
+            
+            <h2>The Crown Steeple</h2>
+            
+            <p>St Giles' most distinctive feature is its crown steeple, added around 1495. Eight flying buttresses rise from the tower to support an open imperial crown of stone — a symbol of Scotland's status as an independent kingdom. It is the only church in Scotland with a crown steeple, and one of only a handful in the world.</p>
+            
+            <p>The crown was damaged by lightning in 1559 (the year of Knox's sermon — some saw this as a sign), and again in the 18th century. The current stonework is largely Victorian, following a restoration that preserved the original form.</p>
+            
+            <h2>The Road Ends</h2>
+            
+            <p>St Giles' sits at the highest point of the Royal Mile, the ancient street that runs from Edinburgh Castle to the Palace of Holyroodhouse. The Great North Road — the A1 — ended here, 410 miles from London.</p>
+            
+            <p>Today the A1 bypasses central Edinburgh, but the old road still enters the city from the south, climbing toward the castle rock. Travellers who have come this far — on foot, by horse, by coach, or by car — have found St Giles' waiting at journey's end for nearly a thousand years.</p>
+            
+            <div class="journey-complete">
+                <h3>Journey Complete</h3>
+                <span class="miles">410 miles</span>
+                <p>From All Hallows by the Tower to St Giles' Cathedral<br>From London to Edinburgh<br>From Saxon England to Reformation Scotland</p>
+            </div>
+            
+            <div class="info-box">
+                <h3>Visitor Information</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>Address</label>
+                        High Street, Edinburgh EH1 1RE
+                    </div>
+                    <div class="info-item">
+                        <label>Opening Hours</label>
+                        Mon–Sat 10am–5pm, Sun 1–5pm
+                    </div>
+                    <div class="info-item">
+                        <label>Admission</label>
+                        Free (donations welcome)
+                    </div>
+                    <div class="info-item">
+                        <label>Thistle Chapel</label>
+                        Included in visit
+                    </div>
+                    <div class="info-item">
+                        <label>Nearest Station</label>
+                        Edinburgh Waverley (10 min walk)
+                    </div>
+                    <div class="info-item">
+                        <label>Mile Marker</label>
+                        410 — end of the A1
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="church-nav">
+                <a href="jedburgh-abbey.html">
+                    <span class="label">Previous Church</span>
+                    <span class="title">Jedburgh Abbey</span>
+                </a>
+                <a href="../index.html" class="next">
+                    <span class="label">Return to</span>
+                    <span class="title">All Churches</span>
+                </a>
+            </nav>
+        </article>
+    </div>
+    
+    <footer>
+        <p>Part of <a href="../index.html">Churches of the A1</a> — London to Edinburgh</p>
+    </footer>
+</body>
+</html>
