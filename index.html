@@ -5,152 +5,192 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Churches of the A1 — A Journey Through Sacred England</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
-            --stone: #2d2a26;
-            --stone-light: #3d3a35;
-            --parchment: #f5f0e8;
-            --gold: #c9a227;
-            --gold-light: #e8d9a0;
-            --ruby: #8b2942;
-            --sapphire: #1e3a5f;
-            --text: #1a1a1a;
-            --text-light: #5a5a5a;
+            --ink: #1a1814;
+            --ink-light: #3d3a35;
+            --cream: #f8f5ef;
+            --paper: #f0ebe0;
+            --gold: #b8941e;
+            --gold-dark: #8a6f16;
+            --sepia: #5c4a32;
+            --sepia-light: #8b7355;
+            --rust: #6b3d2e;
+            --text: #2d2a26;
+            --text-light: #5a554d;
         }
         
         html { scroll-behavior: smooth; }
         
         body {
-            font-family: 'Newsreader', Georgia, serif;
-            background: var(--parchment);
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: var(--cream);
             color: var(--text);
-            font-size: 19px;
-            line-height: 1.75;
+            font-size: 20px;
+            line-height: 1.8;
+            /* Subtle paper texture */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
         }
         
-        a { color: var(--ruby); text-decoration: none; }
-        a:hover { text-decoration: underline; }
+        a { color: var(--sepia); text-decoration: none; }
+        a:hover { text-decoration: underline; text-decoration-style: wavy; text-underline-offset: 3px; }
         
         /* Hero */
         .hero {
-            background: linear-gradient(180deg, var(--stone) 0%, var(--stone-light) 100%);
-            color: var(--parchment);
-            padding: 6rem 2rem 5rem;
+            background: var(--paper);
+            padding: 4rem 2rem 3rem;
             text-align: center;
             position: relative;
-            overflow: hidden;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
         }
         
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L30 60M0 30L60 30' stroke='%23ffffff' stroke-opacity='0.03' stroke-width='1'/%3E%3C/svg%3E");
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='0.015'/%3E%3C/svg%3E");
             pointer-events: none;
         }
         
+        /* Decorative corner flourishes */
+        .corner-flourish {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            opacity: 0.15;
+        }
+        .corner-flourish.top-left { top: 20px; left: 20px; }
+        .corner-flourish.top-right { top: 20px; right: 20px; transform: scaleX(-1); }
+        .corner-flourish.bottom-left { bottom: 20px; left: 20px; transform: scaleY(-1); }
+        .corner-flourish.bottom-right { bottom: 20px; right: 20px; transform: scale(-1); }
+        
         .hero-content {
             position: relative;
-            max-width: 800px;
+            max-width: 750px;
             margin: 0 auto;
         }
         
-        .hero-label {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 1.5rem;
+        /* Illustrated header decoration */
+        .hero-illustration {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 2rem;
         }
         
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             font-weight: 400;
-            line-height: 1.15;
-            margin-bottom: 1.5rem;
-            font-style: italic;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.02em;
+            color: var(--ink);
         }
         
-        .hero h1 span {
-            font-style: normal;
-            color: var(--gold);
+        .hero h1 em {
+            font-style: italic;
+            color: var(--gold-dark);
         }
         
         .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--gold-light);
-            max-width: 550px;
-            margin: 0 auto 2.5rem;
-            opacity: 0.9;
-        }
-        
-        .hero-meta {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.5);
-        }
-        
-        /* Route line decoration */
-        .route-line {
-            width: 2px;
-            height: 80px;
-            background: linear-gradient(to bottom, var(--gold), transparent);
+            font-size: 1.15rem;
+            color: var(--sepia-light);
+            max-width: 500px;
             margin: 0 auto;
-            position: relative;
+            font-style: italic;
         }
         
-        .route-line::before {
-            content: '✟';
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--gold);
-            font-size: 1.5rem;
+        /* Decorative divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 0;
+        }
+        
+        .divider-line {
+            width: 60px;
+            height: 1px;
+            background: var(--sepia-light);
+            opacity: 0.3;
+        }
+        
+        .divider-icon {
+            color: var(--sepia-light);
+            font-size: 1.2rem;
+            opacity: 0.5;
         }
         
         /* Container */
         .container {
-            max-width: 900px;
+            max-width: 850px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
         
         /* Introduction */
         .intro {
-            padding: 5rem 0;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding: 3rem 0 4rem;
+            position: relative;
         }
         
-        .intro p {
-            max-width: 700px;
-            margin: 0 auto 1.5rem;
-            text-align: center;
+        .intro-content {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 3rem;
+            align-items: start;
         }
         
-        .intro p:first-of-type::first-letter {
-            font-size: 4rem;
+        .intro-text p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            hyphens: auto;
+        }
+        
+        .intro-text p:first-of-type::first-letter {
+            font-size: 4.5rem;
             float: left;
-            line-height: 1;
-            padding-right: 0.5rem;
-            color: var(--ruby);
+            line-height: 0.8;
+            padding-right: 0.75rem;
+            padding-top: 0.25rem;
+            color: var(--sepia);
             font-weight: 500;
         }
         
-        /* Stats */
+        /* Side illustration panel */
+        .intro-illustration {
+            background: white;
+            border: 1px solid rgba(0,0,0,0.08);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .intro-illustration svg {
+            width: 100%;
+            height: auto;
+        }
+        
+        .intro-illustration figcaption {
+            font-size: 0.85rem;
+            color: var(--sepia-light);
+            font-style: italic;
+            margin-top: 1rem;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            padding-top: 1rem;
+        }
+        
+        /* Stats in old book style */
         .stats {
             display: flex;
             justify-content: center;
-            gap: 4rem;
-            margin: 3rem 0;
+            gap: 3rem;
             padding: 2rem 0;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            margin: 2rem 0;
         }
         
         .stat {
@@ -158,215 +198,254 @@
         }
         
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 500;
-            color: var(--ruby);
+            color: var(--sepia);
             line-height: 1;
+            font-style: italic;
         }
         
         .stat-label {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 0.1em;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
             color: var(--text-light);
             margin-top: 0.5rem;
+            font-family: 'Inter', sans-serif;
         }
         
-        /* Regions */
+        /* Regions - styled like a table of contents */
         .regions {
-            padding: 4rem 0;
+            padding: 3rem 0;
+            background: white;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
         }
         
         .regions-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
         
         .regions-header h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 400;
-            font-style: italic;
             margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
         }
         
         .regions-header p {
             color: var(--text-light);
+            font-style: italic;
         }
         
         .region-list {
-            display: grid;
-            gap: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
         }
         
         .region-card {
             display: grid;
-            grid-template-columns: 80px 1fr auto;
-            align-items: center;
+            grid-template-columns: 100px 1fr auto;
+            align-items: baseline;
             gap: 1.5rem;
-            padding: 1.5rem 2rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            padding: 1.25rem 2rem;
+            border-bottom: 1px dotted rgba(0,0,0,0.15);
             transition: all 0.3s ease;
             text-decoration: none;
             color: inherit;
         }
         
+        .region-card:last-child {
+            border-bottom: none;
+        }
+        
         .region-card:hover {
-            transform: translateX(8px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            background: var(--paper);
             text-decoration: none;
         }
         
-        .region-number {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--text-light);
-        }
-        
         .region-miles {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--ruby);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: var(--sepia-light);
+            letter-spacing: 0.05em;
         }
         
         .region-info h3 {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 500;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.15rem;
         }
         
         .region-info p {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--text-light);
             margin: 0;
+            font-style: italic;
         }
         
         .region-count {
             font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            color: var(--text-light);
-            background: var(--parchment);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+            font-size: 0.7rem;
+            color: var(--sepia-light);
+            letter-spacing: 0.05em;
         }
         
-        .region-count strong {
-            color: var(--ruby);
-            font-weight: 600;
-        }
-        
-        /* Featured Church */
+        /* Featured Church - illustrated style */
         .featured {
-            padding: 5rem 0;
-            background: white;
-            margin: 4rem 0;
+            padding: 4rem 0;
+            position: relative;
         }
         
         .featured-inner {
-            max-width: 900px;
+            max-width: 850px;
             margin: 0 auto;
             padding: 0 1.5rem;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        .featured-image {
+            background: white;
+            border: 1px solid rgba(0,0,0,0.1);
+            padding: 1rem;
+            position: relative;
+        }
+        
+        .featured-image::after {
+            content: '';
+            position: absolute;
+            top: 8px; left: 8px; right: -8px; bottom: -8px;
+            border: 1px solid rgba(0,0,0,0.1);
+            z-index: -1;
+        }
+        
+        .featured-image svg {
+            width: 100%;
+            height: auto;
+            display: block;
         }
         
         .featured-label {
             font-family: 'Inter', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 0.15em;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 1rem;
+            color: var(--gold-dark);
+            margin-bottom: 0.75rem;
         }
         
         .featured h2 {
-            font-size: 2rem;
+            font-size: 1.75rem;
             font-weight: 400;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
         
         .featured-location {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--sepia-light);
+            font-style: italic;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
         }
         
         .featured p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
         }
         
-        .featured-image {
-            aspect-ratio: 4/3;
-            background: linear-gradient(135deg, var(--stone) 0%, var(--stone-light) 100%);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold);
-            font-size: 4rem;
+        .featured a.read-more {
+            font-style: italic;
+            color: var(--sepia);
         }
         
-        /* Map Section */
+        /* Map Section - styled like an old map */
         .map-section {
             padding: 4rem 0;
-            text-align: center;
+            background: var(--paper);
+            border-top: 1px solid rgba(0,0,0,0.08);
         }
         
         .map-section h2 {
-            font-size: 1.75rem;
+            font-size: 1.6rem;
             font-weight: 400;
-            font-style: italic;
+            text-align: center;
             margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .map-frame {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            border: 1px solid rgba(0,0,0,0.1);
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .map-frame::before {
+            content: '';
+            position: absolute;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 1px solid rgba(0,0,0,0.05);
+            pointer-events: none;
         }
         
         .map-placeholder {
-            max-width: 600px;
-            margin: 0 auto;
             aspect-ratio: 3/4;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: var(--text-light);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
         }
         
         .map-placeholder svg {
-            width: 300px;
+            width: 100%;
+            max-width: 300px;
             height: auto;
-            margin-bottom: 1.5rem;
+        }
+        
+        .map-caption {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-style: italic;
+            color: var(--sepia-light);
+            font-size: 0.95rem;
         }
         
         /* Footer */
         footer {
-            background: var(--stone);
-            color: var(--parchment);
+            background: var(--ink);
+            color: var(--cream);
             padding: 4rem 2rem;
             text-align: center;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
         
         footer h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 400;
-            font-style: italic;
             margin-bottom: 1rem;
+            letter-spacing: 0.05em;
         }
         
         footer p {
             opacity: 0.7;
-            max-width: 500px;
-            margin: 0 auto 2rem;
+            max-width: 480px;
+            margin: 0 auto 1.5rem;
             font-size: 0.95rem;
         }
         
@@ -374,38 +453,214 @@
             color: var(--gold);
         }
         
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-links a {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        
         .footer-note {
             font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            opacity: 0.4;
-            margin-top: 3rem;
+            font-size: 0.7rem;
+            opacity: 0.3;
+            margin-top: 2.5rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .stats { flex-direction: column; gap: 2rem; }
-            .region-card { grid-template-columns: 1fr; text-align: center; }
+            .hero h1 { font-size: 2.2rem; }
+            .intro-content { grid-template-columns: 1fr; }
+            .intro-illustration { order: -1; max-width: 250px; margin: 0 auto 2rem; }
+            .stats { flex-wrap: wrap; gap: 2rem; }
+            .region-card { grid-template-columns: 1fr; gap: 0.5rem; padding: 1.25rem; }
             .region-miles { display: none; }
             .featured-inner { grid-template-columns: 1fr; }
+            .featured-image { max-width: 280px; margin: 0 auto; }
         }
     </style>
 </head>
 <body>
     <header class="hero">
+        <!-- Corner flourishes - pen & ink style -->
+        <svg class="corner-flourish top-left" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.75">
+            <path d="M5 95 Q5 50 30 30 Q50 15 95 5"/>
+            <path d="M5 80 Q10 50 25 35 Q40 20 80 5"/>
+            <path d="M15 95 Q15 60 35 40"/>
+            <circle cx="30" cy="30" r="2" fill="currentColor"/>
+            <path d="M20 45 Q25 40 30 42 Q35 45 32 50" stroke-width="0.5"/>
+            <path d="M40 25 Q45 20 50 22 Q55 25 52 30" stroke-width="0.5"/>
+        </svg>
+        <svg class="corner-flourish top-right" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.75">
+            <path d="M5 95 Q5 50 30 30 Q50 15 95 5"/>
+            <path d="M5 80 Q10 50 25 35 Q40 20 80 5"/>
+            <path d="M15 95 Q15 60 35 40"/>
+            <circle cx="30" cy="30" r="2" fill="currentColor"/>
+            <path d="M20 45 Q25 40 30 42 Q35 45 32 50" stroke-width="0.5"/>
+            <path d="M40 25 Q45 20 50 22 Q55 25 52 30" stroke-width="0.5"/>
+        </svg>
+        
         <div class="hero-content">
-            <p class="hero-label">A Sacred Journey</p>
-            <h1>Churches of the <span>A1</span></h1>
-            <p class="hero-subtitle">From London to Edinburgh, 410 miles of ancient stones, soaring spires, and a thousand years of faith</p>
-            <p class="hero-meta">The Great North Road — Britain's oldest highway</p>
+            <!-- Pen & ink church silhouette header -->
+            <svg class="hero-illustration" viewBox="0 0 400 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Trees left -->
+                <g stroke="#2d2a26" stroke-width="0.8" opacity="0.6">
+                    <path d="M30 130 Q35 110 30 95 Q25 80 35 70 Q30 60 40 50 Q35 40 45 35"/>
+                    <path d="M25 130 Q30 115 28 100"/>
+                    <path d="M35 130 Q32 110 38 95"/>
+                    <path d="M50 130 Q55 115 48 100 Q52 85 45 75"/>
+                    <path d="M60 130 Q58 120 62 110 Q55 95 65 80 Q58 65 68 55"/>
+                </g>
+                
+                <!-- Main church -->
+                <g stroke="#2d2a26" stroke-width="1" fill="none">
+                    <!-- Spire -->
+                    <path d="M200 15 L200 50"/>
+                    <path d="M195 50 L200 20 L205 50"/>
+                    <!-- Tower -->
+                    <path d="M180 50 L180 95 L220 95 L220 50 L180 50"/>
+                    <path d="M185 55 L185 65 L195 65 L195 55 Z" fill="#2d2a26" opacity="0.3"/>
+                    <path d="M205 55 L205 65 L215 65 L215 55 Z" fill="#2d2a26" opacity="0.3"/>
+                    <!-- Nave -->
+                    <path d="M140 75 L140 130 L260 130 L260 75"/>
+                    <path d="M140 75 L200 55 L260 75"/>
+                    <!-- Windows -->
+                    <path d="M155 90 L155 115 Q165 85 175 115 L175 90" fill="#2d2a26" opacity="0.2"/>
+                    <path d="M225 90 L225 115 Q235 85 245 115 L245 90" fill="#2d2a26" opacity="0.2"/>
+                    <!-- Door -->
+                    <path d="M190 130 L190 105 Q200 95 210 105 L210 130"/>
+                    <!-- Porch -->
+                    <path d="M185 105 L185 130 M215 105 L215 130"/>
+                    <path d="M182 105 L200 95 L218 105"/>
+                </g>
+                
+                <!-- Graveyard -->
+                <g stroke="#2d2a26" stroke-width="0.6" opacity="0.5">
+                    <path d="M120 130 L120 120 Q125 118 130 120 L130 130"/>
+                    <path d="M100 130 L100 122 L108 122 L108 130"/>
+                    <path d="M270 130 L270 118 Q275 115 280 118 L280 130"/>
+                    <path d="M290 130 L290 124 L296 124 L296 130"/>
+                </g>
+                
+                <!-- Trees right -->
+                <g stroke="#2d2a26" stroke-width="0.8" opacity="0.6">
+                    <path d="M330 130 Q325 110 335 95 Q328 80 340 70"/>
+                    <path d="M350 130 Q355 115 348 100 Q355 85 345 75 Q358 60 348 50"/>
+                    <path d="M370 130 Q365 115 372 105 Q368 90 375 80"/>
+                </g>
+                
+                <!-- Ground line -->
+                <path d="M10 130 Q100 128 200 130 Q300 132 390 130" stroke="#2d2a26" stroke-width="0.5" opacity="0.4"/>
+                
+                <!-- Grass tufts -->
+                <g stroke="#2d2a26" stroke-width="0.4" opacity="0.3">
+                    <path d="M80 130 Q82 126 85 130"/>
+                    <path d="M310 130 Q312 127 315 130"/>
+                    <path d="M130 130 Q133 125 136 130"/>
+                </g>
+            </svg>
+            
+            <h1>Churches of the <em>A1</em></h1>
+            <p class="hero-subtitle">From London to Edinburgh — 410 miles of ancient stones, soaring spires, and a thousand years of faith</p>
         </div>
-        <div class="route-line"></div>
+        
+        <div class="divider">
+            <span class="divider-line"></span>
+            <span class="divider-icon">✟</span>
+            <span class="divider-line"></span>
+        </div>
     </header>
     
     <section class="intro">
         <div class="container">
-            <p>The A1 is more than a road. It is a spine of stone that has carried pilgrims, kings, and armies for two millennia — from the Roman legions who first carved it into the landscape, to the medieval travellers who stopped to pray at wayside chapels, to the modern drivers who pass, often unknowing, the most remarkable collection of sacred architecture in Britain.</p>
-            <p>This is a guide to those churches. Not every chapel and meeting house, but the ones that matter — the ones that have shaped history, sheltered saints, and stood witness to the long story of these islands.</p>
+            <div class="intro-content">
+                <div class="intro-text">
+                    <p>The A1 is more than a road. It is a spine of stone that has carried pilgrims, kings, and armies for two millennia — from the Roman legions who first carved it into the landscape, to the medieval travellers who stopped to pray at wayside chapels, to the modern drivers who pass, often unknowing, the most remarkable collection of sacred architecture in Britain.</p>
+                    <p>This is a guide to those churches. Not every chapel and meeting house, but the ones that matter — the ones that have shaped history, sheltered saints, and stood witness to the long story of these islands.</p>
+                </div>
+                
+                <figure class="intro-illustration">
+                    <!-- Detailed pen & ink tower illustration -->
+                    <svg viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g stroke="#2d2a26" stroke-width="0.8">
+                            <!-- Spire with cross -->
+                            <path d="M100 10 L100 5"/>
+                            <path d="M97 8 L103 8"/>
+                            <path d="M100 10 L100 50"/>
+                            <path d="M85 50 L100 15 L115 50"/>
+                            <path d="M88 45 L100 20 L112 45" stroke-width="0.4"/>
+                            
+                            <!-- Tower body -->
+                            <path d="M70 50 L70 180 L130 180 L130 50 L70 50"/>
+                            
+                            <!-- Battlements -->
+                            <path d="M70 50 L70 45 L80 45 L80 50 M80 45 L80 40 L90 40 L90 50"/>
+                            <path d="M90 50 L90 45 L100 45 L100 50 M100 45 L100 40 L110 40 L110 50"/>
+                            <path d="M110 50 L110 45 L120 45 L120 50 M120 45 L120 40 L130 40 L130 50"/>
+                            
+                            <!-- Windows -->
+                            <g fill="#2d2a26" opacity="0.25">
+                                <path d="M80 60 L80 75 Q90 55 100 75 L100 60 Z"/>
+                                <path d="M80 90 L80 110 L90 110 L90 90 Z"/>
+                                <path d="M110 90 L110 110 L120 110 L120 90 Z"/>
+                                <path d="M85 125 L85 155 Q100 115 115 155 L115 125 Z"/>
+                            </g>
+                            <path d="M80 60 L80 75 Q90 55 100 75 L100 60"/>
+                            <path d="M80 90 L80 110 L90 110 L90 90 L80 90"/>
+                            <path d="M110 90 L110 110 L120 110 L120 90 L110 90"/>
+                            <path d="M85 125 L85 155 Q100 115 115 155 L115 125"/>
+                            
+                            <!-- Stone texture lines -->
+                            <g stroke-width="0.3" opacity="0.3">
+                                <path d="M70 70 L130 70"/>
+                                <path d="M70 85 L80 85 M100 85 L130 85"/>
+                                <path d="M70 115 L85 115 M115 115 L130 115"/>
+                                <path d="M70 140 L85 140 M115 140 L130 140"/>
+                                <path d="M70 160 L130 160"/>
+                            </g>
+                            
+                            <!-- Buttress -->
+                            <path d="M65 180 L70 120 L70 180"/>
+                            <path d="M135 180 L130 120 L130 180"/>
+                            
+                            <!-- Ground/base -->
+                            <path d="M50 180 L150 180"/>
+                            
+                            <!-- Graveyard stones -->
+                            <path d="M30 180 L30 168 Q35 165 40 168 L40 180" stroke-width="0.6"/>
+                            <path d="M155 180 L155 170 L163 170 L163 180" stroke-width="0.6"/>
+                            
+                            <!-- Grass and ground detail -->
+                            <g stroke-width="0.4" opacity="0.4">
+                                <path d="M20 180 Q22 175 25 180"/>
+                                <path d="M45 180 Q48 176 51 180"/>
+                                <path d="M140 180 Q143 177 146 180"/>
+                                <path d="M170 180 Q173 176 176 180"/>
+                            </g>
+                            
+                            <!-- Trees in background -->
+                            <g stroke-width="0.5" opacity="0.35">
+                                <path d="M15 180 Q20 160 15 145 Q25 130 18 115"/>
+                                <path d="M180 180 Q175 155 182 140 Q172 125 180 110"/>
+                            </g>
+                        </g>
+                    </svg>
+                    <figcaption>A tower on the Great North Road</figcaption>
+                </figure>
+            </div>
             
             <div class="stats">
                 <div class="stat">
@@ -433,75 +688,57 @@
             
             <div class="region-list">
                 <a href="london.html" class="region-card">
-                    <div>
-                        <div class="region-number">Region I</div>
-                        <div class="region-miles">0–25</div>
-                    </div>
+                    <div class="region-miles">Miles 0–25</div>
                     <div class="region-info">
-                        <h3>London & Hertfordshire</h3>
+                        <h3>I. London & Hertfordshire</h3>
                         <p>From the City's ancient churches to the estates of the north</p>
                     </div>
-                    <div class="region-count"><strong>12</strong> churches</div>
+                    <div class="region-count">12 churches</div>
                 </a>
                 
                 <a href="eastern.html" class="region-card">
-                    <div>
-                        <div class="region-number">Region II</div>
-                        <div class="region-miles">25–120</div>
-                    </div>
+                    <div class="region-miles">Miles 25–120</div>
                     <div class="region-info">
-                        <h3>Cambridgeshire & Lincolnshire</h3>
+                        <h3>II. Cambridgeshire & Lincolnshire</h3>
                         <p>Flat lands, big skies, and some of England's finest wool churches</p>
                     </div>
-                    <div class="region-count"><strong>15</strong> churches</div>
+                    <div class="region-count">15 churches</div>
                 </a>
                 
                 <a href="midlands.html" class="region-card">
-                    <div>
-                        <div class="region-number">Region III</div>
-                        <div class="region-miles">120–180</div>
-                    </div>
+                    <div class="region-miles">Miles 120–180</div>
                     <div class="region-info">
-                        <h3>Nottinghamshire & South Yorkshire</h3>
+                        <h3>III. Nottinghamshire & South Yorkshire</h3>
                         <p>Newark's Civil War scars and the industrial north begins</p>
                     </div>
-                    <div class="region-count"><strong>8</strong> churches</div>
+                    <div class="region-count">8 churches</div>
                 </a>
                 
                 <a href="yorkshire.html" class="region-card">
-                    <div>
-                        <div class="region-number">Region IV</div>
-                        <div class="region-miles">180–250</div>
-                    </div>
+                    <div class="region-miles">Miles 180–250</div>
                     <div class="region-info">
-                        <h3>North Yorkshire</h3>
+                        <h3>IV. North Yorkshire</h3>
                         <p>The Dales, the Moors, and York's medieval magnificence</p>
                     </div>
-                    <div class="region-count"><strong>10</strong> churches</div>
+                    <div class="region-count">10 churches</div>
                 </a>
                 
                 <a href="durham.html" class="region-card">
-                    <div>
-                        <div class="region-number">Region V</div>
-                        <div class="region-miles">250–330</div>
-                    </div>
+                    <div class="region-miles">Miles 250–330</div>
                     <div class="region-info">
-                        <h3>County Durham & Northumberland</h3>
+                        <h3>V. County Durham & Northumberland</h3>
                         <p>The land of saints — Cuthbert, Bede, and the Angel of the North</p>
                     </div>
-                    <div class="region-count"><strong>9</strong> churches</div>
+                    <div class="region-count">9 churches</div>
                 </a>
                 
                 <a href="borders.html" class="region-card">
-                    <div>
-                        <div class="region-number">Region VI</div>
-                        <div class="region-miles">330–410</div>
-                    </div>
+                    <div class="region-miles">Miles 330–410</div>
                     <div class="region-info">
-                        <h3>Scottish Borders & Edinburgh</h3>
+                        <h3>VI. Scottish Borders & Edinburgh</h3>
                         <p>Border abbeys, reformation battles, and journey's end</p>
                     </div>
-                    <div class="region-count"><strong>8</strong> churches</div>
+                    <div class="region-count">8 churches</div>
                 </a>
             </div>
         </div>
@@ -509,44 +746,148 @@
     
     <section class="featured">
         <div class="featured-inner">
+            <figure class="featured-image">
+                <!-- St Wulfram's pen & ink illustration -->
+                <svg viewBox="0 0 250 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g stroke="#2d2a26" stroke-width="0.7">
+                        <!-- Tall spire -->
+                        <path d="M125 5 L125 10"/>
+                        <path d="M122 8 L128 8"/>
+                        <path d="M125 10 L125 90"/>
+                        <path d="M105 90 L125 12 L145 90"/>
+                        <path d="M110 85 L125 20 L140 85" stroke-width="0.4"/>
+                        
+                        <!-- Spire windows/details -->
+                        <g stroke-width="0.4" opacity="0.5">
+                            <path d="M120 40 L120 50 L130 50 L130 40"/>
+                            <path d="M118 60 L118 72 L132 72 L132 60"/>
+                        </g>
+                        
+                        <!-- Tower top -->
+                        <path d="M95 90 L95 85 L105 85 L105 90"/>
+                        <path d="M145 90 L145 85 L155 85 L155 90"/>
+                        
+                        <!-- Tower body -->
+                        <path d="M90 90 L90 200 L160 200 L160 90 L90 90"/>
+                        
+                        <!-- Tower windows -->
+                        <g fill="#2d2a26" opacity="0.2">
+                            <path d="M100 100 L100 125 Q110 90 120 125 L120 100 Z"/>
+                            <path d="M130 100 L130 125 Q140 90 150 125 L150 100 Z"/>
+                            <path d="M105 140 L105 175 Q125 120 145 175 L145 140 Z"/>
+                        </g>
+                        <path d="M100 100 L100 125 Q110 90 120 125 L120 100"/>
+                        <path d="M130 100 L130 125 Q140 90 150 125 L150 100"/>
+                        <path d="M105 140 L105 175 Q125 120 145 175 L145 140"/>
+                        
+                        <!-- Nave -->
+                        <path d="M50 170 L50 280 L200 280 L200 170"/>
+                        <path d="M50 170 L125 140 L200 170"/>
+                        
+                        <!-- Nave windows -->
+                        <g fill="#2d2a26" opacity="0.2">
+                            <path d="M65 190 L65 240 Q85 180 105 240 L105 190 Z"/>
+                            <path d="M145 190 L145 240 Q165 180 185 240 L185 190 Z"/>
+                        </g>
+                        <path d="M65 190 L65 240 Q85 180 105 240 L105 190"/>
+                        <path d="M145 190 L145 240 Q165 180 185 240 L185 190"/>
+                        
+                        <!-- Door -->
+                        <path d="M110 280 L110 245 Q125 235 140 245 L140 280"/>
+                        
+                        <!-- Buttresses -->
+                        <path d="M45 280 L50 200 L50 280"/>
+                        <path d="M205 280 L200 200 L200 280"/>
+                        
+                        <!-- Ground -->
+                        <path d="M20 280 L230 280"/>
+                        
+                        <!-- Gravestones -->
+                        <path d="M25 280 L25 268 Q30 265 35 268 L35 280" stroke-width="0.5"/>
+                        <path d="M210 280 L210 270 L218 270 L218 280" stroke-width="0.5"/>
+                        
+                        <!-- Trees -->
+                        <g stroke-width="0.5" opacity="0.4">
+                            <path d="M15 280 Q20 260 15 245 Q25 230 18 215"/>
+                            <path d="M230 280 Q225 255 232 240 Q222 225 230 210"/>
+                        </g>
+                        
+                        <!-- Grass -->
+                        <g stroke-width="0.35" opacity="0.35">
+                            <path d="M40 280 Q42 276 45 280"/>
+                            <path d="M190 280 Q193 275 196 280"/>
+                        </g>
+                    </g>
+                </svg>
+            </figure>
+            
             <div>
                 <p class="featured-label">Featured Church</p>
                 <h2>St Wulfram's, Grantham</h2>
                 <p class="featured-location">Lincolnshire — Mile 110</p>
                 <p>A cathedral in all but name. St Wulfram's 282-foot spire has guided travellers on the Great North Road since the 14th century. Its gargoyles are a gallery of medieval face-pulling; its library, chained books from 1598.</p>
                 <p>Margaret Thatcher was baptised here. Isaac Newton worshipped here as a schoolboy. The church has seen 700 years of the road pass by its door.</p>
-                <a href="churches/st-wulframs-grantham.html">Read the full story →</a>
+                <a href="churches/st-wulframs-grantham.html" class="read-more">Read the full story →</a>
             </div>
-            <div class="featured-image">⛪</div>
         </div>
     </section>
     
     <section class="map-section">
         <div class="container">
             <h2>The Route</h2>
-            <div class="map-placeholder">
-                <svg viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Simplified UK outline with A1 route -->
-                    <path d="M100 20 Q80 60, 90 100 Q95 140, 100 180 Q102 220, 98 260 Q95 300, 100 340 Q105 360, 100 380" 
-                          stroke="#8b2942" stroke-width="3" fill="none" stroke-dasharray="8,4"/>
-                    
-                    <!-- Markers -->
-                    <circle cx="100" cy="380" r="6" fill="#8b2942"/>
-                    <text x="115" y="385" font-family="Inter" font-size="10" fill="#5a5a5a">London</text>
-                    
-                    <circle cx="100" cy="280" r="4" fill="#c9a227"/>
-                    <text x="115" y="285" font-family="Inter" font-size="9" fill="#5a5a5a">Grantham</text>
-                    
-                    <circle cx="98" cy="200" r="4" fill="#c9a227"/>
-                    <text x="113" y="205" font-family="Inter" font-size="9" fill="#5a5a5a">York</text>
-                    
-                    <circle cx="95" cy="120" r="4" fill="#c9a227"/>
-                    <text x="110" y="125" font-family="Inter" font-size="9" fill="#5a5a5a">Durham</text>
-                    
-                    <circle cx="100" cy="20" r="6" fill="#8b2942"/>
-                    <text x="115" y="25" font-family="Inter" font-size="10" fill="#5a5a5a">Edinburgh</text>
-                </svg>
-                <p>410 miles of sacred history</p>
+            <div class="map-frame">
+                <div class="map-placeholder">
+                    <svg viewBox="0 0 200 380" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Stylized pen & ink route map -->
+                        <g stroke="#2d2a26" fill="none">
+                            <!-- Route line - hand-drawn style -->
+                            <path d="M100 360 Q95 340 100 320 Q105 300 98 280 Q92 260 100 240 Q108 220 100 200 Q92 180 100 160 Q108 140 100 120 Q92 100 100 80 Q108 60 100 40 Q95 25 100 15" 
+                                  stroke-width="2" stroke-dasharray="6,3" opacity="0.7"/>
+                            
+                            <!-- Markers with church symbols -->
+                            <g stroke-width="0.8">
+                                <!-- London -->
+                                <circle cx="100" cy="360" r="5" fill="#2d2a26"/>
+                                <path d="M100 355 L100 350 M97 352 L103 352"/>
+                                <text x="115" y="362" font-family="Cormorant Garamond" font-size="11" fill="#2d2a26" font-style="italic">London</text>
+                                <text x="115" y="374" font-family="Inter" font-size="7" fill="#5a554d">Mile 0</text>
+                                
+                                <!-- Grantham -->
+                                <circle cx="98" cy="280" r="3" fill="#b8941e"/>
+                                <text x="113" y="282" font-family="Cormorant Garamond" font-size="10" fill="#2d2a26">Grantham</text>
+                                
+                                <!-- Newark -->
+                                <circle cx="100" cy="240" r="3" fill="#b8941e"/>
+                                <text x="115" y="242" font-family="Cormorant Garamond" font-size="10" fill="#2d2a26">Newark</text>
+                                
+                                <!-- York -->
+                                <circle cx="100" cy="160" r="4" fill="#2d2a26"/>
+                                <path d="M100 152 L100 148 M97 150 L103 150"/>
+                                <text x="115" y="162" font-family="Cormorant Garamond" font-size="10" fill="#2d2a26">York</text>
+                                
+                                <!-- Durham -->
+                                <circle cx="100" cy="100" r="4" fill="#2d2a26"/>
+                                <path d="M100 92 L100 88 M97 90 L103 90"/>
+                                <text x="115" y="102" font-family="Cormorant Garamond" font-size="10" fill="#2d2a26">Durham</text>
+                                
+                                <!-- Edinburgh -->
+                                <circle cx="100" cy="15" r="5" fill="#2d2a26"/>
+                                <path d="M100 10 L100 5 M97 7 L103 7"/>
+                                <text x="115" y="17" font-family="Cormorant Garamond" font-size="11" fill="#2d2a26" font-style="italic">Edinburgh</text>
+                                <text x="115" y="29" font-family="Inter" font-size="7" fill="#5a554d">Mile 410</text>
+                            </g>
+                            
+                            <!-- Compass rose -->
+                            <g transform="translate(30, 60)" stroke-width="0.6" opacity="0.5">
+                                <circle cx="0" cy="0" r="15"/>
+                                <path d="M0 -18 L0 18 M-18 0 L18 0"/>
+                                <path d="M0 -15 L3 -5 L0 -8 L-3 -5 Z" fill="#2d2a26"/>
+                                <text x="-3" y="-22" font-family="Inter" font-size="7">N</text>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+                <p class="map-caption">410 miles of sacred history</p>
             </div>
         </div>
     </section>
@@ -554,7 +895,10 @@
     <footer>
         <h3>A Living Archive</h3>
         <p>This collection grows as we travel the road. Each church has a story; each story connects to the next, like the stones of an ancient wall.</p>
-        <p><a href="about.html">About this project</a> · <a href="contribute.html">Contribute</a></p>
+        <div class="footer-links">
+            <a href="about.html">About this project</a>
+            <a href="contribute.html">Contribute</a>
+        </div>
         <p class="footer-note">Churches of the A1 — London to Edinburgh</p>
     </footer>
 </body>
